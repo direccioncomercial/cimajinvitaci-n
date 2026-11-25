@@ -386,4 +386,942 @@
     }
 
     .dress-text {
-      font-family: 'Cormorant Garamond', Georgia, serif
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 13.5px;
+      color: var(--gold-light);
+    }
+
+    .rsvp-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 12px;
+      color: #bcae96;
+    }
+
+    .card-footer-web {
+      width: 100%;
+      padding-top: 6px;
+      border-top: 1px solid rgba(212, 175, 106, 0.25);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ===== PANEL DERECHO: ESTUDIO WHATSAPP ===== */
+    .studio-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .studio-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .studio-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .studio-header h2 {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .field label {
+      font-size: 11.5px;
+      color: #b7aa94;
+      font-weight: 600;
+    }
+
+    .tone-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tone-btn.active {
+      background: rgba(212, 175, 106, 0.26);
+      border-color: var(--gold-light);
+      color: var(--gold-light);
+    }
+
+    textarea#waMessagePreview {
+      width: 100%;
+      min-height: 210px;
+      line-height: 1.5;
+      resize: vertical;
+      font-size: 13px;
+    }
+
+    .helper-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11.5px;
+      color: #968974;
+      flex-wrap: wrap;
+    }
+
+    /* ===== LISTA DE INVITADOS ===== */
+    .guest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .guest-row {
+      background: var(--panel-card);
+      border: 1px solid rgba(212, 175, 106, 0.22);
+      border-radius: 10px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .guest-row.active-row {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px rgba(212, 175, 106, 0.35);
+    }
+
+    .row-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    .btn-del {
+      color: #f28b82;
+      border-color: rgba(242, 139, 130, 0.3);
+      background: rgba(242, 139, 130, 0.08);
+      padding: 7px 9px;
+    }
+
+    /* ===== MODAL IMPORTACIÓN MASIVA ===== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--panel-bg);
+      border: 1px solid var(--gold);
+      border-radius: 14px;
+      padding: 22px;
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ===== NOTIFICACIÓN FLOTANTE ===== */
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 300;
+      background: #17130d;
+      border: 1.5px solid var(--gold);
+      color: var(--ivory);
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.75);
+      max-width: 420px;
+      font-size: 13px;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    .toast strong {
+      color: var(--gold-light);
+    }
+
+    @media (max-width: 1040px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+      .preview-column {
+        position: static;
+      }
+      .guest-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      @page {
+        size: 108mm 192mm;
+        margin: 0;
+      }
+      body {
+        background: #000000;
+      }
+      .topbar, .studio-column, .toast, .modal-backdrop, .preview-hint {
+        display: none !important;
+      }
+      .workspace {
+        display: block;
+        padding: 0;
+      }
+      .card-916 {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand-title">
+      <strong>Papelería Digital &amp; Envío WhatsApp · CIMAJ</strong>
+      <span>Cena de Acción de Gracias · Jueves 26 de noviembre de 2026 (9:16)</span>
+    </div>
+    <div class="topbar-controls">
+      <select id="themeSelect" onchange="applyTheme(this.value)">
+        <option value="candles">Ambiente: Luz de Velas</option>
+        <option value="harvest">Ambiente: Cosecha Dorada</option>
+        <option value="intimate">Ambiente: Velada Íntima</option>
+      </select>
+      <button class="btn btn-gold" onclick="downloadCurrentPng()">&#11015; Descargar PNG (1080&times;1920)</button>
+      <button class="btn" onclick="window.print()">&#128424; Imprimir / PDF</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- COLUMNA IZQUIERDA: TARJETA 9:16 -->
+    <section class="preview-column">
+      <div class="card-916" id="invitationCard">
+        <img
+          id="cardBgImg"
+          class="card-bg-photo"
+          crossorigin="anonymous"
+          src="https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=80"
+          alt="Cena de Acción de Gracias"
+        />
+        <div class="card-bg-overlay"></div>
+        <div class="card-frame-outer"></div>
+        <div class="card-frame-inner"></div>
+
+        <div class="card-content">
+          <div class="logo-stage">
+            <img
+              id="cimajLogo"
+              class="cimaj-logo"
+              crossorigin="anonymous"
+              src="https://raw.githubusercontent.com/direccioncomercial/cimajinvitaci-n/main/png_01.png"
+              onerror="this.onerror=null;this.src='./png_01.png';"
+              alt="Logotipo oficial CIMAJ"
+            />
+          </div>
+
+          <div>
+            <h1 class="script-title">Cena de Acción de Gracias</h1>
+            <div class="ornament-line"></div>
+          </div>
+
+          <div class="guest-block">
+            <div class="guest-salutation">Estimado/a</div>
+            <div class="guest-name-display" id="cardGuestName">Dr. Carlos Mendoza</div>
+          </div>
+
+          <p class="invite-verse">
+            Una velada especial para compartir gratitud, fraternidad y celebrar los logros alcanzados juntos en esta temporada.
+          </p>
+
+          <div class="datetime-grid">
+            <div class="dt-side" id="cardDayName">JUEVES</div>
+            <div class="dt-center">
+              <div class="dt-day-num" id="cardDayNum">26</div>
+              <div class="dt-month-year" id="cardMonthYear">NOVIEMBRE &middot; 2026</div>
+            </div>
+            <div class="dt-side" id="cardTime">19H30</div>
+          </div>
+
+          <div class="venue-block">
+            <div class="venue-name" id="cardVenue">Recepción Privada &middot; Casa CIMAJ</div>
+            <div class="address-kicker">&#128205; DIRECCIÓN</div>
+            <div class="address-text" id="cardAddress">Av. República del Salvador y Moscú &middot; Quito, Ecuador</div>
+            <a id="cardMapsBtn" class="maps-pill-btn" href="https://maps.google.com/?q=Quito,Ecuador" target="_blank" rel="noopener">
+              &#128205; Ver Ubicación en Google Maps
+            </a>
+          </div>
+
+          <div class="dress-rsvp">
+            <div class="dress-text" id="cardDress">Traje Formal / Cóctel Ejecutivo</div>
+            <div class="rsvp-text">Agradecemos confirmar su grata asistencia</div>
+          </div>
+
+          <a class="card-footer-web" href="https://www.cimaj.gt.tc" target="_blank" rel="noopener">www.cimaj.gt.tc</a>
+        </div>
+      </div>
+      <span class="preview-hint" style="font-size:11.5px; color:#9c8f7a;">Vista previa exacta en proporción vertical 9:16 (1080 &times; 1920 px)</span>
+    </section>
+
+    <!-- COLUMNA DERECHA: CONFIGURACIÓN, MENSAJE Y LISTA -->
+    <section class="studio-column">
+      <!-- A. DATOS DEL EVENTO -->
+      <div class="studio-card">
+        <div class="studio-header">
+          <h2>A. Datos del Evento (Sincronizados con Tarjeta y WhatsApp)</h2>
+        </div>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="inFecha">Fecha completa (texto WhatsApp)</label>
+            <input id="inFecha" type="text" value="Jueves 26 de noviembre de 2026" oninput="syncAll()" />
+          </div>
+          <div class="field">
+            <label for="inHora">Hora del encuentro</label>
+            <input id="inHora" type="text" value="19h30" oninput="syncAll()" />
+          </div>
+          <div class="field">
+            <label for="inLugar">Nombre de la Sede / Lugar</label>
+            <input id="inLugar" type="text" value="Recepción Privada · Casa CIMAJ" oninput="syncAll()" />
+          </div>
+          <div class="field">
+            <label for="inEtiqueta">Código de Vestimenta</label>
+            <input id="inEtiqueta" type="text" value="Traje Formal / Cóctel Ejecutivo" oninput="syncAll()" />
+          </div>
+          <div class="field">
+            <label for="inDireccion">Dirección Exacta</label>
+            <input id="inDireccion" type="text" value="Av. República del Salvador y Moscú · Quito, Ecuador" oninput="syncAll()" />
+          </div>
+          <div class="field">
+            <label for="inMaps">Enlace de Google Maps (Botón en tarjeta y link en WhatsApp)</label>
+            <input id="inMaps" type="url" value="https://maps.google.com/?q=Quito,Ecuador" oninput="syncAll()" />
+          </div>
+        </div>
+      </div>
+
+      <!-- B. MENSAJE PERSONALIZADO -->
+      <div class="studio-card">
+        <div class="studio-header">
+          <h2>B. Mensaje Personalizado de WhatsApp</h2>
+          <div class="tone-tabs">
+            <button class="btn tone-btn active" id="toneExec" onclick="setTone('exec')">Tono Ejecutivo e Institucional</button>
+            <button class="btn tone-btn" id="toneWarm" onclick="setTone('warm')">Tono Cálido y Cercano</button>
+          </div>
+        </div>
+        <textarea id="waMessagePreview" oninput="manualMessageEdit = true"></textarea>
+        <div class="helper-row">
+          <span>Los emojis están codificados en Unicode estándar para evitar símbolos rotos en WhatsApp.</span>
+          <button class="btn btn-sm" onclick="resetToneTemplate()">Restaurar plantilla del tono</button>
+        </div>
+      </div>
+
+      <!-- C. LISTADO DE INVITADOS Y ENVÍO -->
+      <div class="studio-card">
+        <div class="studio-header">
+          <div>
+            <h2>C. Listado de Invitados y Envío Directo</h2>
+            <span style="font-size:11.5px; color:#9c8f7a;">Pega nombres y teléfonos (ej. Dr. Carlos Mendoza, 0998877398)</span>
+          </div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="btn" onclick="openImportModal()">Importar Lista Masiva</button>
+            <button class="btn btn-gold" onclick="addGuestRow('', '')">+ Agregar Invitado</button>
+          </div>
+        </div>
+
+        <div class="guest-list" id="guestListContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL IMPORTACIÓN MASIVA -->
+  <div class="modal-backdrop" id="importModal">
+    <div class="modal-box">
+      <h3 style="color:var(--gold-light); font-size:15px;">Importar Listado de Invitados</h3>
+      <p style="font-size:12.5px; color:#bfb29c; line-height:1.45;">
+        Pega una persona por línea separando nombre y celular con coma, guion o tabulación (desde Excel o WhatsApp). Los celulares ecuatorianos que empiecen con <strong>09</strong> se convierten automáticamente a <strong>5939...</strong>
+      </p>
+      <textarea id="bulkTextarea" rows="7" placeholder="Dr. Carlos Mendoza, 0996408009&#10;Dra. Ana Lucía Pérez, 0987654321&#10;Ing. Roberto Salazar, +593 99 123 4567"></textarea>
+      <div style="display:flex; justify-content:flex-end; gap:8px;">
+        <button class="btn" onclick="closeImportModal()">Cancelar</button>
+        <button class="btn btn-gold" onclick="processBulkImport()">Cargar Invitados</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toastBox"></div>
+
+  <script>
+    const THEMES = {
+      candles: {
+        photo: 'https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=80',
+        topColor: '#1f1209',
+        bottomColor: '#0c0704'
+      },
+      harvest: {
+        photo: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1080&q=80',
+        topColor: '#241608',
+        bottomColor: '#0e0904'
+      },
+      intimate: {
+        photo: 'https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1080&q=80',
+        topColor: '#17110d',
+        bottomColor: '#080605'
+      }
+    };
+
+    let currentTheme = 'candles';
+    let currentTone = 'exec';
+    let manualMessageEdit = false;
+    let activeGuestIndex = 0;
+
+    let guests = [
+      { name: 'Dr. Carlos Mendoza', phone: '593996408009' },
+      { name: 'Dra. Ana Lucía Pérez', phone: '593987654321' },
+      { name: 'Ing. Roberto Salazar', phone: '593991234567' }
+    ];
+
+    function normalizeEcuadorPhone(raw) {
+      let digits = String(raw || '').replace(/\D/g, '');
+      if (!digits) return '';
+      if (digits.startsWith('00593')) digits = digits.slice(2);
+      if (digits.length === 10 && digits.startsWith('09')) {
+        return '593' + digits.slice(1);
+      }
+      if (digits.length === 9 && digits.startsWith('9')) {
+        return '593' + digits;
+      }
+      return digits;
+    }
+
+    function buildWhatsAppText(guestName) {
+      const name = (guestName || 'Invitado/a Especial').trim();
+      const fecha = document.getElementById('inFecha').value.trim();
+      const hora = document.getElementById('inHora').value.trim();
+      const lugar = document.getElementById('inLugar').value.trim();
+      const direccion = document.getElementById('inDireccion').value.trim();
+      const maps = document.getElementById('inMaps').value.trim();
+      const etiqueta = document.getElementById('inEtiqueta').value.trim();
+
+      const E_CAL = '\u{1F4C5}';
+      const E_CLK = '\u{1F556}';
+      const E_BLD = '\u{1F3DB}\u{FE0F}';
+      const E_CMP = '\u{1F9ED}';
+      const E_PIN = '\u{1F4CD}';
+      const E_TIE = '\u{1F454}';
+      const E_WEB = '\u{1F310}';
+      const E_TRK = '\u{1F983}';
+      const E_SPK = '\u{2728}';
+
+      if (currentTone === 'warm') {
+        return (
+          `\u00A1Hola *${name}*! De parte de toda la familia *CIMAJ*, queremos compartir contigo nuestra invitaci\u00F3n adjunta para celebrar juntos la *Cena de Acci\u00F3n de Gracias* ${E_TRK}${E_SPK}\n\n` +
+          `Ser\u00E1 un espacio especial para agradecer, compartir y brindar por los proyectos alcanzados este a\u00F1o.\n\n` +
+          `${E_CAL} *Fecha:* ${fecha}\n` +
+          `${E_CLK} *Hora:* ${hora}\n` +
+          `${E_BLD} *Lugar:* ${lugar}\n` +
+          `${E_CMP} *Direcci\u00F3n:* ${direccion}\n` +
+          `${E_PIN} *Ubicaci\u00F3n Google Maps:* ${maps}\n` +
+          `${E_TIE} *Vestimenta:* ${etiqueta}\n\n` +
+          `${E_WEB} www.cimaj.gt.tc\n\n` +
+          `Por favor conf\u00EDrmanos tu asistencia por aqu\u00ED. \u00A1Te esperamos!`
+        );
+      }
+
+      return (
+        `Estimado/a *${name}*, reciba un cordial saludo de parte de *CIMAJ* (*Corporaci\u00F3n de Indagaci\u00F3n, Mediaci\u00F3n, Asesor\u00EDa Jur\u00EDdica y Financiera*).\n\n` +
+        `Con motivo del *D\u00EDa de Acci\u00F3n de Gracias*, tenemos el honor de invitarle a compartir una velada especial de gratitud y confraternidad en nuestra sede. Adjunto encontrar\u00E1 su invitaci\u00F3n personalizada.\n\n` +
+        `${E_CAL} *Fecha:* ${fecha}\n` +
+        `${E_CLK} *Hora:* ${hora}\n` +
+        `${E_BLD} *Lugar:* ${lugar}\n` +
+        `${E_CMP} *Direcci\u00F3n:* ${direccion}\n` +
+        `${E_PIN} *Ubicaci\u00F3n Google Maps:* ${maps}\n` +
+        `${E_TIE} *Etiqueta:* ${etiqueta}\n\n` +
+        `${E_WEB} Conozca m\u00E1s sobre nuestra gesti\u00F3n institucional en: www.cimaj.gt.tc\n\n` +
+        `Agradecemos confirmar su grata asistencia por este medio. \u00A1Ser\u00E1 un gusto recibirle!`
+      );
+    }
+
+    function setTone(tone) {
+      currentTone = tone;
+      manualMessageEdit = false;
+      document.getElementById('toneExec').classList.toggle('active', tone === 'exec');
+      document.getElementById('toneWarm').classList.toggle('active', tone === 'warm');
+      syncAll();
+    }
+
+    function resetToneTemplate() {
+      manualMessageEdit = false;
+      syncAll();
+    }
+
+    function applyTheme(key) {
+      currentTheme = key;
+      const t = THEMES[key] || THEMES.candles;
+      document.getElementById('cardBgImg').src = t.photo;
+    }
+
+    function syncAll() {
+      const guest = guests[activeGuestIndex] || { name: 'Invitado/a Especial', phone: '' };
+      const hora = document.getElementById('inHora').value.trim() || '19H30';
+      const lugar = document.getElementById('inLugar').value.trim() || 'Recepción Privada · Casa CIMAJ';
+      const direccion = document.getElementById('inDireccion').value.trim() || 'Quito, Ecuador';
+      const maps = document.getElementById('inMaps').value.trim() || 'https://maps.google.com';
+      const etiqueta = document.getElementById('inEtiqueta').value.trim() || 'Traje Formal';
+
+      document.getElementById('cardGuestName').textContent = guest.name || 'Invitado/a Especial';
+      document.getElementById('cardTime').textContent = hora.toUpperCase();
+      document.getElementById('cardVenue').textContent = lugar;
+      document.getElementById('cardAddress').textContent = direccion;
+      document.getElementById('cardMapsBtn').href = maps;
+      document.getElementById('cardDress').textContent = etiqueta;
+
+      if (!manualMessageEdit) {
+        document.getElementById('waMessagePreview').value = buildWhatsAppText(guest.name);
+      }
+    }
+
+    function renderGuestList() {
+      const container = document.getElementById('guestListContainer');
+      container.innerHTML = '';
+
+      guests.forEach((g, idx) => {
+        const row = document.createElement('div');
+        row.className = 'guest-row' + (idx === activeGuestIndex ? ' active-row' : '');
+
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.placeholder = 'Nombre del invitado';
+        nameInput.value = g.name;
+        nameInput.oninput = (e) => {
+          guests[idx].name = e.target.value;
+          if (idx === activeGuestIndex) {
+            manualMessageEdit = false;
+            syncAll();
+          }
+        };
+
+        const phoneInput = document.createElement('input');
+        phoneInput.type = 'text';
+        phoneInput.placeholder = '59399...';
+        phoneInput.value = g.phone;
+        phoneInput.onblur = (e) => {
+          const norm = normalizeEcuadorPhone(e.target.value);
+          guests[idx].phone = norm;
+          e.target.value = norm;
+        };
+        phoneInput.oninput = (e) => {
+          guests[idx].phone = e.target.value;
+        };
+
+        const actions = document.createElement('div');
+        actions.className = 'row-actions';
+
+        const btnPrev = document.createElement('button');
+        btnPrev.className = 'btn btn-sm';
+        btnPrev.textContent = 'Vista Previa';
+        btnPrev.onclick = () => selectGuest(idx);
+
+        const btnCopy = document.createElement('button');
+        btnCopy.className = 'btn btn-sm';
+        btnCopy.textContent = 'Copiar PNG';
+        btnCopy.onclick = () => copyGuestPng(idx);
+
+        const btnDown = document.createElement('button');
+        btnDown.className = 'btn btn-sm';
+        btnDown.textContent = 'Descargar PNG';
+        btnDown.onclick = () => downloadGuestPng(idx);
+
+        const btnSend = document.createElement('button');
+        btnSend.className = 'btn btn-wa btn-sm';
+        btnSend.textContent = 'Enviar (PNG + Texto)';
+        btnSend.onclick = () => sendWhatsAppWithClipboardPng(idx);
+
+        const btnDel = document.createElement('button');
+        btnDel.className = 'btn btn-del btn-sm';
+        btnDel.innerHTML = '&times;';
+        btnDel.title = 'Eliminar invitado';
+        btnDel.onclick = () => {
+          if (guests.length === 1) return;
+          guests.splice(idx, 1);
+          if (activeGuestIndex >= guests.length) activeGuestIndex = guests.length - 1;
+          renderGuestList();
+          syncAll();
+        };
+
+        actions.append(btnPrev, btnCopy, btnDown, btnSend, btnDel);
+        row.append(nameInput, phoneInput, actions);
+        container.appendChild(row);
+      });
+    }
+
+    function selectGuest(idx) {
+      activeGuestIndex = idx;
+      manualMessageEdit = false;
+      renderGuestList();
+      syncAll();
+    }
+
+    function addGuestRow(name, phone) {
+      guests.push({ name: name, phone: normalizeEcuadorPhone(phone) });
+      activeGuestIndex = guests.length - 1;
+      manualMessageEdit = false;
+      renderGuestList();
+      syncAll();
+    }
+
+    function openImportModal() {
+      document.getElementById('importModal').classList.add('open');
+    }
+
+    function closeImportModal() {
+      document.getElementById('importModal').classList.remove('open');
+    }
+
+    function processBulkImport() {
+      const raw = document.getElementById('bulkTextarea').value.trim();
+      if (!raw) return closeImportModal();
+
+      const lines = raw.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const parsed = [];
+
+      lines.forEach(line => {
+        const parts = line.split(/[\t,;|]+|\s+-\s+/);
+        if (parts.length >= 2) {
+          const phone = normalizeEcuadorPhone(parts[parts.length - 1]);
+          const name = parts.slice(0, parts.length - 1).join(' ').trim();
+          if (name) parsed.push({ name, phone });
+        } else {
+          parsed.push({ name: line, phone: '' });
+        }
+      });
+
+      if (parsed.length > 0) {
+        guests = parsed;
+        activeGuestIndex = 0;
+        manualMessageEdit = false;
+        renderGuestList();
+        syncAll();
+      }
+      document.getElementById('bulkTextarea').value = '';
+      closeImportModal();
+    }
+
+    function showToast(htmlText) {
+      const box = document.getElementById('toastBox');
+      box.innerHTML = htmlText;
+      box.classList.add('show');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => box.classList.remove('show'), 7000);
+    }
+
+    function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(/\s+/);
+      let line = '';
+      let currentY = y;
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        if (ctx.measureText(testLine).width > maxWidth && n > 0) {
+          ctx.fillText(line.trim(), x, currentY);
+          line = words[n] + ' ';
+          currentY += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line.trim(), x, currentY);
+      return currentY;
+    }
+
+    async function generatePngBlob(guestName) {
+      await document.fonts.ready;
+      const W = 1080;
+      const H = 1920;
+      const canvas = document.createElement('canvas');
+      canvas.width = W;
+      canvas.height = H;
+      const ctx = canvas.getContext('2d');
+
+      const theme = THEMES[currentTheme] || THEMES.candles;
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+      bgGrad.addColorStop(0, '#000000');
+      bgGrad.addColorStop(0.28, theme.topColor);
+      bgGrad.addColorStop(1, theme.bottomColor);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, W, H);
+
+      const bgImg = document.getElementById('cardBgImg');
+      if (bgImg && bgImg.complete && bgImg.naturalWidth > 0) {
+        try {
+          ctx.save();
+          ctx.globalAlpha = 0.32;
+          const scale = Math.max(W / bgImg.naturalWidth, H / bgImg.naturalHeight);
+          const dw = bgImg.naturalWidth * scale;
+          const dh = bgImg.naturalHeight * scale;
+          ctx.drawImage(bgImg, (W - dw) / 2, (H - dh) / 2, dw, dh);
+          ctx.restore();
+        } catch (e) {}
+      }
+
+      const vignette = ctx.createRadialGradient(W / 2, 230, 80, W / 2, 420, 1450);
+      vignette.addColorStop(0, 'rgba(0,0,0,0.96)');
+      vignette.addColorStop(0.32, 'rgba(0,0,0,0.86)');
+      vignette.addColorStop(0.68, 'rgba(12,7,4,0.68)');
+      vignette.addColorStop(1, 'rgba(5,3,2,0.94)');
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, W, H);
+
+      // Marcos dorados dobles
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.72)';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(36, 36, W - 72, H - 72);
+
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.35)';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(52, 52, W - 104, H - 104);
+
+      // Logotipo CIMAJ sin bordes
+      const logoImg = document.getElementById('cimajLogo');
+      if (logoImg && logoImg.complete && logoImg.naturalWidth > 0) {
+        try {
+          ctx.save();
+          ctx.globalCompositeOperation = 'screen';
+          const targetH = 225;
+          const ratio = logoImg.naturalWidth / logoImg.naturalHeight;
+          const targetW = targetH * ratio;
+          ctx.drawImage(logoImg, (W - targetW) / 2, 76, targetW, targetH);
+          ctx.restore();
+        } catch (e) {}
+      }
+
+      ctx.textAlign = 'center';
+
+      // Título caligráfico
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = '106px "Great Vibes", Georgia, serif';
+      ctx.fillText('Cena de Acci\u00F3n de Gracias', W / 2, 412);
+
+      // Línea ornamental
+      const lineGrad = ctx.createLinearGradient(W / 2 - 220, 0, W / 2 + 220, 0);
+      lineGrad.addColorStop(0, 'rgba(212,175,106,0)');
+      lineGrad.addColorStop(0.5, 'rgba(212,175,106,0.9)');
+      lineGrad.addColorStop(1, 'rgba(212,175,106,0)');
+      ctx.fillStyle = lineGrad;
+      ctx.fillRect(W / 2 - 220, 444, 440, 2.5);
+
+      // Saludo e invitado
+      ctx.fillStyle = '#d4af6a';
+      ctx.font = 'italic 38px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText('Estimado/a', W / 2, 520);
+
+      ctx.fillStyle = '#fbf7ef';
+      ctx.font = '700 68px "Cormorant Garamond", Georgia, serif';
+      wrapCanvasText(ctx, guestName || 'Invitado/a Especial', W / 2, 598, 860, 74);
+
+      // Dedicatoria
+      ctx.fillStyle = '#dfd3be';
+      ctx.font = 'italic 40px "Cormorant Garamond", Georgia, serif';
+      wrapCanvasText(
+        ctx,
+        'Una velada especial para compartir gratitud, fraternidad y celebrar los logros alcanzados juntos en esta temporada.',
+        W / 2,
+        725,
+        820,
+        54
+      );
+
+      // Bloque Fecha / Hora
+      ctx.fillStyle = 'rgba(212, 175, 106, 0.42)';
+      ctx.fillRect(110, 885, W - 220, 2);
+      ctx.fillRect(110, 1070, W - 220, 2);
+
+      ctx.fillRect(W / 2 - 195, 908, 2, 140);
+      ctx.fillRect(W / 2 + 195, 908, 2, 140);
+
+      const hora = (document.getElementById('inHora').value.trim() || '19H30').toUpperCase();
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = '700 30px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('JUEVES', W / 2 - 315, 990);
+      ctx.fillText(hora, W / 2 + 315, 990);
+
+      ctx.fillStyle = '#fbf7ef';
+      ctx.font = '700 94px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText('26', W / 2, 988);
+
+      ctx.fillStyle = '#d4af6a';
+      ctx.font = '600 22px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('NOVIEMBRE \u00B7 2026', W / 2, 1034);
+
+      // Sede y Dirección
+      const lugar = document.getElementById('inLugar').value.trim() || 'Recepci\u00F3n Privada \u00B7 Casa CIMAJ';
+      const direccion = document.getElementById('inDireccion').value.trim() || 'Quito, Ecuador';
+      const etiqueta = document.getElementById('inEtiqueta').value.trim() || 'Traje Formal';
+
+      ctx.fillStyle = '#fbf7ef';
+      ctx.font = '600 46px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText(lugar, W / 2, 1165);
+
+      ctx.fillStyle = '#d4af6a';
+      ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('DIRECCI\u00D3N', W / 2, 1228);
+
+      ctx.fillStyle = '#dfd3be';
+      ctx.font = '400 32px "Plus Jakarta Sans", sans-serif';
+      const lastAddrY = wrapCanvasText(ctx, direccion, W / 2, 1280, 840, 42);
+
+      // Botón visual de Google Maps en el PNG
+      const btnY = lastAddrY + 34;
+      const btnW = 470;
+      const btnH = 58;
+      ctx.fillStyle = 'rgba(212, 175, 106, 0.18)';
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect((W - btnW) / 2, btnY, btnW, btnH, 29);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = '600 26px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('Ver Ubicaci\u00F3n en Google Maps', W / 2, btnY + 38);
+
+      // Etiqueta y confirmación
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = 'italic 36px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText(etiqueta, W / 2, 1555);
+
+      ctx.fillStyle = '#bcae96';
+      ctx.font = 'italic 32px "Cormorant Garamond", Georgia, serif';
+      ctx.fillText('Agradecemos confirmar su grata asistencia', W / 2, 1612);
+
+      // Pie institucional
+      ctx.fillStyle = 'rgba(212, 175, 106, 0.32)';
+      ctx.fillRect(110, 1750, W - 220, 2);
+
+      ctx.fillStyle = '#d4af6a';
+      ctx.font = '600 30px "Plus Jakarta Sans", sans-serif';
+      ctx.fillText('www.cimaj.gt.tc', W / 2, 1812);
+
+      return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+    }
+
+    async function copyGuestPng(idx) {
+      selectGuest(idx);
+      const guest = guests[idx];
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          const item = new ClipboardItem({
+            'image/png': generatePngBlob(guest.name)
+          });
+          await navigator.clipboard.write([item]);
+          showToast(`\u2705 <strong>Tarjeta PNG copiada</strong> para ${guest.name}. P\u00E9gala en WhatsApp con <strong>Cmd + V</strong> (Mac) o <strong>Ctrl + V</strong> (Windows).`);
+        } else {
+          await downloadGuestPng(idx);
+        }
+      } catch (err) {
+        await downloadGuestPng(idx);
+        showToast(`\u2B07\uFE0F El navegador restringi\u00F3 el portapapeles; la tarjeta PNG de <strong>${guest.name}</strong> se descarg\u00F3 para que la arrastres al chat.`);
+      }
+    }
+
+    async function downloadGuestPng(idx) {
+      selectGuest(idx);
+      const guest = guests[idx];
+      const blob = await generatePngBlob(guest.name);
+      const safeName = (guest.name || 'Invitado')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zA-Z0-9]+/g, '_');
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Invitacion_Thanksgiving_CIMAJ_${safeName}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadCurrentPng() {
+      downloadGuestPng(activeGuestIndex);
+    }
+
+    async function sendWhatsAppWithClipboardPng(idx) {
+      selectGuest(idx);
+      const guest = guests[idx];
+      const phone = normalizeEcuadorPhone(guest.phone);
+      const message = document.getElementById('waMessagePreview').value;
+
+      // Copia síncrona del PNG al portapapeles antes de abrir WhatsApp
+      try {
+        if (navigator.clipboard && window.ClipboardItem) {
+          const item = new ClipboardItem({
+            'image/png': generatePngBlob(guest.name)
+          });
+          await navigator.clipboard.write([item]);
+          showToast(
+            `\u{1F4CB} <strong>Tarjeta PNG copiada al portapapeles.</strong><br/>` +
+            `Al abrirse WhatsApp con el texto listo, presiona <strong>Cmd + V</strong> (Mac) o <strong>Ctrl + V</strong> (Windows) para adjuntar la imagen.`
+          );
+        }
+      } catch (e) {
+        showToast(`Abre el chat y usa el bot\u00F3n <strong>Descargar PNG</strong> para adjuntar la tarjeta de <strong>${guest.name}</strong>.`);
+      }
+
+      const encodedText = encodeURIComponent(message);
+      const waUrl = phone
+        ? `https://api.whatsapp.com/send?phone=${phone}&text=${encodedText}`
+        : `https://api.whatsapp.com/send?text=${encodedText}`;
+
+      window.open(waUrl, '_blank', 'noopener');
+    }
+
+    renderGuestList();
+    syncAll();
+  </script>
+</body>
+</html>
