@@ -16,7 +16,7 @@
       --gold: #d4af6a;
       --gold-light: #f0d7a2;
       --ivory: #fbf7ef;
-      --cream-muted: #dfd3be;
+      --cream-muted: #ebe1cf;
       --whatsapp: #25d366;
       --whatsapp-dark: #1da851;
     }
@@ -77,7 +77,7 @@
       flex-wrap: wrap;
     }
 
-    select, input, textarea {
+    select, input[type="text"], input[type="url"], textarea {
       font-family: inherit;
       background: #0d0b09;
       color: var(--ivory);
@@ -91,6 +91,24 @@
 
     select:focus, input:focus, textarea:focus {
       border-color: var(--gold);
+    }
+
+    .slider-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0d0b09;
+      border: 1px solid rgba(212, 175, 106, 0.32);
+      border-radius: 8px;
+      padding: 6px 11px;
+      font-size: 12px;
+      color: var(--cream-muted);
+    }
+
+    .slider-pill input[type="range"] {
+      width: 78px;
+      accent-color: var(--gold);
+      cursor: pointer;
     }
 
     .btn {
@@ -168,7 +186,7 @@
       overflow: hidden;
       position: relative;
       background: #140d08;
-      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.78), 0 0 0 1px rgba(212, 175, 106, 0.4);
+      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.78), 0 0 0 1px rgba(212, 175, 106, 0.45);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -182,23 +200,31 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.34;
-      filter: saturate(1.12) contrast(1.06);
+      opacity: 0.92;
       pointer-events: none;
+      transition: opacity 0.2s ease;
     }
 
+    /* Zona superior negra solo detrás del logo para que se funda sin recuadros,
+       dejando el resto de la escena ilustrada completamente visible */
     .card-bg-overlay {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 50% 12%, #000000 0%, rgba(0, 0, 0, 0.94) 24%, rgba(20, 12, 7, 0.72) 55%, rgba(10, 7, 5, 0.94) 100%);
+      background: linear-gradient(
+        180deg,
+        #000000 0%,
+        rgba(0, 0, 0, 0.96) 13%,
+        rgba(0, 0, 0, 0.28) 25%,
+        rgba(0, 0, 0, 0.34) 76%,
+        rgba(0, 0, 0, 0.62) 100%
+      );
       pointer-events: none;
     }
 
     .card-frame-outer {
       position: absolute;
       inset: 13px;
-      border: 1.2px solid rgba(212, 175, 106, 0.65);
+      border: 1.3px solid rgba(212, 175, 106, 0.75);
       border-radius: 10px;
       pointer-events: none;
       z-index: 3;
@@ -207,7 +233,7 @@
     .card-frame-inner {
       position: absolute;
       inset: 18px;
-      border: 0.6px solid rgba(212, 175, 106, 0.32);
+      border: 0.7px solid rgba(212, 175, 106, 0.38);
       border-radius: 7px;
       pointer-events: none;
       z-index: 3;
@@ -222,6 +248,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92);
     }
 
     .logo-stage {
@@ -245,14 +272,14 @@
       font-size: 40px;
       line-height: 1.05;
       color: var(--gold-light);
-      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7);
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.95);
       margin-top: 2px;
     }
 
     .ornament-line {
-      width: 130px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      width: 140px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
       margin: 4px auto;
     }
 
@@ -263,8 +290,8 @@
     .guest-salutation {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      font-size: 14px;
-      color: var(--gold);
+      font-size: 14.5px;
+      color: var(--gold-light);
       letter-spacing: 0.5px;
     }
 
@@ -283,7 +310,7 @@
       font-style: italic;
       font-size: 14.5px;
       line-height: 1.38;
-      color: var(--cream-muted);
+      color: var(--ivory);
       max-width: 310px;
     }
 
@@ -294,8 +321,10 @@
       align-items: center;
       gap: 10px;
       padding: 8px 0;
-      border-top: 1px solid rgba(212, 175, 106, 0.35);
-      border-bottom: 1px solid rgba(212, 175, 106, 0.35);
+      border-top: 1px solid rgba(212, 175, 106, 0.52);
+      border-bottom: 1px solid rgba(212, 175, 106, 0.52);
+      background: rgba(0, 0, 0, 0.24);
+      border-radius: 6px;
     }
 
     .dt-side {
@@ -308,8 +337,8 @@
 
     .dt-center {
       padding: 0 14px;
-      border-left: 1px solid rgba(212, 175, 106, 0.45);
-      border-right: 1px solid rgba(212, 175, 106, 0.45);
+      border-left: 1px solid rgba(212, 175, 106, 0.55);
+      border-right: 1px solid rgba(212, 175, 106, 0.55);
     }
 
     .dt-day-num {
@@ -324,9 +353,9 @@
       font-size: 8.5px;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       margin-top: 3px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .venue-block {
@@ -339,8 +368,8 @@
 
     .venue-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 17px;
-      font-weight: 600;
+      font-size: 17.5px;
+      font-weight: 700;
       color: var(--ivory);
     }
 
@@ -349,13 +378,13 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
     }
 
     .address-text {
       font-size: 12px;
       line-height: 1.32;
-      color: var(--cream-muted);
+      color: var(--ivory);
       max-width: 315px;
     }
 
@@ -366,12 +395,13 @@
       gap: 6px;
       padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(212, 175, 106, 0.16);
-      border: 1px solid rgba(212, 175, 106, 0.72);
+      background: rgba(12, 10, 8, 0.62);
+      border: 1px solid rgba(212, 175, 106, 0.85);
       color: var(--gold-light);
       font-size: 11px;
       font-weight: 600;
       text-decoration: none;
+      text-shadow: none;
       transition: all 0.2s;
     }
 
@@ -395,18 +425,18 @@
     .rsvp-text {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      font-size: 12px;
-      color: #bcae96;
+      font-size: 12.5px;
+      color: var(--cream-muted);
     }
 
     .card-footer-web {
       width: 100%;
       padding-top: 6px;
-      border-top: 1px solid rgba(212, 175, 106, 0.25);
+      border-top: 1px solid rgba(212, 175, 106, 0.38);
       font-size: 11px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 1.2px;
-      color: var(--gold);
+      color: var(--gold-light);
       text-decoration: none;
     }
 
@@ -631,10 +661,17 @@
     </div>
     <div class="topbar-controls">
       <select id="themeSelect" onchange="applyTheme(this.value)">
-        <option value="candles">Ambiente: Luz de Velas</option>
-        <option value="harvest">Ambiente: Cosecha Dorada</option>
-        <option value="intimate">Ambiente: Velada Íntima</option>
+        <option value="candles">Fondo 1: Luz de Velas (Ámbar)</option>
+        <option value="harvest">Fondo 2: Cosecha de Otoño (Cobre)</option>
+        <option value="royal">Fondo 3: Gala Azul Real y Oro</option>
+        <option value="burgundy">Fondo 4: Vino Tinto y Terciopelo</option>
       </select>
+      <label class="slider-pill" title="Ajusta la intensidad visual del fondo">
+        <span>Intensidad:</span>
+        <input id="bgOpacityRange" type="range" min="35" max="100" value="92" oninput="updateBgIntensity(this.value)" />
+      </label>
+      <label class="btn" for="customBgUpload">&#128444; Subir Fondo</label>
+      <input type="file" id="customBgUpload" accept="image/*" style="display:none;" onchange="handleCustomBg(event)" />
       <button class="btn btn-gold" onclick="downloadCurrentPng()">&#11015; Descargar PNG (1080&times;1920)</button>
       <button class="btn" onclick="window.print()">&#128424; Imprimir / PDF</button>
     </div>
@@ -647,9 +684,7 @@
         <img
           id="cardBgImg"
           class="card-bg-photo"
-          crossorigin="anonymous"
-          src="https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=80"
-          alt="Cena de Acción de Gracias"
+          alt="Fondo Cena de Acción de Gracias"
         />
         <div class="card-bg-overlay"></div>
         <div class="card-frame-outer"></div>
@@ -797,28 +832,12 @@
   <div class="toast" id="toastBox"></div>
 
   <script>
-    const THEMES = {
-      candles: {
-        photo: 'https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=80',
-        topColor: '#1f1209',
-        bottomColor: '#0c0704'
-      },
-      harvest: {
-        photo: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1080&q=80',
-        topColor: '#241608',
-        bottomColor: '#0e0904'
-      },
-      intimate: {
-        photo: 'https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=1080&q=80',
-        topColor: '#17110d',
-        bottomColor: '#080605'
-      }
-    };
-
     let currentTheme = 'candles';
+    let bgIntensity = 0.92;
     let currentTone = 'exec';
     let manualMessageEdit = false;
     let activeGuestIndex = 0;
+    const generatedThemeCache = {};
 
     let guests = [
       { name: 'Dr. Carlos Mendoza', phone: '593996408009' },
@@ -826,6 +845,341 @@
       { name: 'Ing. Roberto Salazar', phone: '593991234567' }
     ];
 
+    /* ===== GENERADOR DE FONDOS ARTÍSTICOS 1080x1920 (100% VISIBLES Y SIN CORS) ===== */
+    function drawCandle(ctx, x, y, w, h, flameScale) {
+      // Halo cálido amplio alrededor de la llama
+      const fy = y - 28 * flameScale;
+      const halo = ctx.createRadialGradient(x, fy, 4, x, fy, 175 * flameScale);
+      halo.addColorStop(0, 'rgba(255, 232, 165, 0.85)');
+      halo.addColorStop(0.25, 'rgba(245, 166, 56, 0.45)');
+      halo.addColorStop(0.6, 'rgba(195, 92, 18, 0.16)');
+      halo.addColorStop(1, 'rgba(195, 92, 18, 0)');
+      ctx.fillStyle = halo;
+      ctx.beginPath();
+      ctx.arc(x, fy, 175 * flameScale, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cuerpo de la vela en marfil cálido
+      const bodyGrad = ctx.createLinearGradient(x - w / 2, y, x + w / 2, y);
+      bodyGrad.addColorStop(0, '#7a5836');
+      bodyGrad.addColorStop(0.35, '#f2dfc0');
+      bodyGrad.addColorStop(0.75, '#cfa978');
+      bodyGrad.addColorStop(1, '#5e4124');
+      ctx.fillStyle = bodyGrad;
+      ctx.beginPath();
+      ctx.roundRect(x - w / 2, y, w, h, [8, 8, 2, 2]);
+      ctx.fill();
+
+      // Cera derretida superior
+      ctx.fillStyle = '#fff0d4';
+      ctx.beginPath();
+      ctx.ellipse(x, y + 3, w / 2, 6, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Pabilo
+      ctx.strokeStyle = '#2b180a';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x, y - 12 * flameScale);
+      ctx.stroke();
+
+      // Llama exterior e interior
+      ctx.save();
+      ctx.translate(x, y - 10 * flameScale);
+      ctx.scale(flameScale, flameScale);
+      const flameGrad = ctx.createRadialGradient(0, -16, 2, 0, -18, 28);
+      flameGrad.addColorStop(0, '#ffffff');
+      flameGrad.addColorStop(0.4, '#ffe58f');
+      flameGrad.addColorStop(0.8, '#ff8c1a');
+      flameGrad.addColorStop(1, 'rgba(255, 110, 0, 0)');
+      ctx.fillStyle = flameGrad;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-14, -8, -11, -28, 0, -42);
+      ctx.bezierCurveTo(11, -28, 14, -8, 0, 0);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawMapleLeaf(ctx, x, y, size, angle, color1, color2) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      const g = ctx.createLinearGradient(0, -size, 0, size);
+      g.addColorStop(0, color1);
+      g.addColorStop(1, color2);
+      ctx.fillStyle = g;
+      ctx.strokeStyle = 'rgba(255, 224, 158, 0.35)';
+      ctx.lineWidth = 1.5;
+
+      ctx.beginPath();
+      ctx.moveTo(0, size * 0.65);
+      ctx.lineTo(-size * 0.12, size * 0.28);
+      ctx.lineTo(-size * 0.62, size * 0.36);
+      ctx.lineTo(-size * 0.48, size * 0.08);
+      ctx.lineTo(-size * 0.85, -size * 0.12);
+      ctx.lineTo(-size * 0.42, -size * 0.24);
+      ctx.lineTo(-size * 0.52, -size * 0.56);
+      ctx.lineTo(-size * 0.18, -size * 0.42);
+      ctx.lineTo(0, -size * 0.92);
+      ctx.lineTo(size * 0.18, -size * 0.42);
+      ctx.lineTo(size * 0.52, -size * 0.56);
+      ctx.lineTo(size * 0.42, -size * 0.24);
+      ctx.lineTo(size * 0.85, -size * 0.12);
+      ctx.lineTo(size * 0.48, size * 0.08);
+      ctx.lineTo(size * 0.62, size * 0.36);
+      ctx.lineTo(size * 0.12, size * 0.28);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Tallo
+      ctx.beginPath();
+      ctx.moveTo(0, size * 0.62);
+      ctx.lineTo(0, size * 1.05);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawWheatStalk(ctx, baseX, baseY, height, tilt) {
+      ctx.save();
+      ctx.translate(baseX, baseY);
+      ctx.rotate(tilt);
+      ctx.strokeStyle = 'rgba(232, 189, 104, 0.55)';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.quadraticCurveTo(14, -height * 0.5, 0, -height);
+      ctx.stroke();
+
+      for (let i = 0; i < 9; i++) {
+        const py = -height * 0.42 - i * (height * 0.062);
+        const side = i % 2 === 0 ? -1 : 1;
+        ctx.save();
+        ctx.translate(side * 4, py);
+        ctx.rotate(side * 0.48);
+        const grainGrad = ctx.createLinearGradient(0, -18, 0, 18);
+        grainGrad.addColorStop(0, '#f5d794');
+        grainGrad.addColorStop(1, '#a66d24');
+        ctx.fillStyle = grainGrad;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 7, 19, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+      ctx.restore();
+    }
+
+    function renderThemeBackgroundDataUrl(themeKey) {
+      if (generatedThemeCache[themeKey]) return generatedThemeCache[themeKey];
+
+      const W = 1080;
+      const H = 1920;
+      const c = document.createElement('canvas');
+      c.width = W;
+      c.height = H;
+      const ctx = c.getContext('2d');
+
+      if (themeKey === 'harvest') {
+        // FONDO 2: COSECHA DE OTOÑO (COBRE, TERRACOTA Y ESPIGAS DORADAS)
+        const g = ctx.createRadialGradient(W / 2, H * 0.46, 60, W / 2, H * 0.5, 1150);
+        g.addColorStop(0, '#783614');
+        g.addColorStop(0.45, '#4a1d0b');
+        g.addColorStop(0.85, '#260d05');
+        g.addColorStop(1, '#120602');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // Espigas de trigo doradas en ambos costados
+        drawWheatStalk(ctx, 110, 1790, 560, 0.16);
+        drawWheatStalk(ctx, 165, 1830, 480, 0.26);
+        drawWheatStalk(ctx, W - 110, 1790, 560, -0.16);
+        drawWheatStalk(ctx, W - 165, 1830, 480, -0.26);
+
+        // Hojas de arce otoñales en bordes y esquinas
+        const leaves = [
+          [130, 390, 78, -0.4, '#e07a2b', '#8c310d'],
+          [950, 410, 82, 0.5, '#d98a2b', '#7d340c'],
+          [95, 860, 68, -0.7, '#c85a20', '#6b2209'],
+          [985, 880, 72, 0.65, '#e39b38', '#8a3d0f'],
+          [140, 1340, 84, -0.35, '#d46924', '#75250a'],
+          [940, 1360, 80, 0.42, '#eba43e', '#8f4010'],
+          [240, 1760, 74, -0.25, '#c9581e', '#692008'],
+          [840, 1760, 74, 0.25, '#e0892e', '#7d330b']
+        ];
+        leaves.forEach(l => drawMapleLeaf(ctx, ...l));
+
+        // Destellos dorados cálidos
+        for (let i = 0; i < 48; i++) {
+          const px = (i * 227) % W;
+          const py = 300 + ((i * 389) % (H - 360));
+          const rad = 3 + (i % 6) * 2.5;
+          const bg = ctx.createRadialGradient(px, py, 0, px, py, rad * 4);
+          bg.addColorStop(0, 'rgba(255, 214, 128, 0.55)');
+          bg.addColorStop(1, 'rgba(255, 214, 128, 0)');
+          ctx.fillStyle = bg;
+          ctx.beginPath();
+          ctx.arc(px, py, rad * 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else if (themeKey === 'royal') {
+        // FONDO 3: GALA AZUL REAL Y ORO (IDENTIDAD CORPORATIVA CIMAJ)
+        const g = ctx.createRadialGradient(W / 2, H * 0.45, 50, W / 2, H * 0.5, 1180);
+        g.addColorStop(0, '#183b6e');
+        g.addColorStop(0.5, '#0c2040');
+        g.addColorStop(0.88, '#061124');
+        g.addColorStop(1, '#020712');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // Arcos catedralicios Art-Decó en oro champán
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.28)';
+        ctx.lineWidth = 2.5;
+        for (let r = 0; r < 3; r++) {
+          const inset = 95 + r * 38;
+          ctx.beginPath();
+          ctx.moveTo(inset, H - 110);
+          ctx.lineTo(inset, 560);
+          ctx.arc(W / 2, 560, W / 2 - inset, Math.PI, 0, false);
+          ctx.lineTo(W - inset, H - 110);
+          ctx.stroke();
+        }
+
+        // Rayos radiales sutiles desde el centro superior
+        ctx.save();
+        ctx.translate(W / 2, 460);
+        for (let a = 0; a < 24; a++) {
+          ctx.rotate((Math.PI * 2) / 24);
+          const rg = ctx.createLinearGradient(0, 0, 0, 950);
+          rg.addColorStop(0, 'rgba(228, 200, 138, 0.14)');
+          rg.addColorStop(1, 'rgba(228, 200, 138, 0)');
+          ctx.fillStyle = rg;
+          ctx.beginPath();
+          ctx.moveTo(-4, 0);
+          ctx.lineTo(4, 0);
+          ctx.lineTo(26, 950);
+          ctx.lineTo(-26, 950);
+          ctx.closePath();
+          ctx.fill();
+        }
+        ctx.restore();
+
+        // Polvo estelar dorado
+        for (let i = 0; i < 65; i++) {
+          const px = (i * 193 + 80) % W;
+          const py = 280 + ((i * 317) % (H - 340));
+          const rad = 2 + (i % 5) * 2;
+          const sg = ctx.createRadialGradient(px, py, 0, px, py, rad * 4);
+          sg.addColorStop(0, 'rgba(245, 222, 168, 0.65)');
+          sg.addColorStop(1, 'rgba(245, 222, 168, 0)');
+          ctx.fillStyle = sg;
+          ctx.beginPath();
+          ctx.arc(px, py, rad * 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      } else if (themeKey === 'burgundy') {
+        // FONDO 4: VINO TINTO Y TERCIOPELO (BORGOÑA Y ORO ROSA)
+        const g = ctx.createRadialGradient(W / 2, H * 0.48, 60, W / 2, H * 0.5, 1150);
+        g.addColorStop(0, '#66172d');
+        g.addColorStop(0.48, '#3d0c1a');
+        g.addColorStop(0.88, '#1f050d');
+        g.addColorStop(1, '#0e0205');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // Luces bokeh cálidas en oro rosa y champán
+        const orbs = [
+          [160, 440, 130, 'rgba(245, 184, 156, 0.22)'],
+          [920, 490, 150, 'rgba(235, 165, 128, 0.20)'],
+          [140, 1020, 170, 'rgba(212, 145, 118, 0.18)'],
+          [940, 1120, 145, 'rgba(245, 195, 152, 0.22)'],
+          [220, 1640, 180, 'rgba(235, 175, 135, 0.24)'],
+          [860, 1660, 175, 'rgba(245, 190, 145, 0.22)']
+        ];
+        orbs.forEach(([ox, oy, orad, ocol]) => {
+          const og = ctx.createRadialGradient(ox, oy, 10, ox, oy, orad);
+          og.addColorStop(0, ocol);
+          og.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = og;
+          ctx.beginPath();
+          ctx.arc(ox, oy, orad, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Hojas decorativas en tonos oro rosa y borgoña
+        drawMapleLeaf(ctx, 135, 420, 74, -0.38, '#d99b78', '#782238');
+        drawMapleLeaf(ctx, 945, 420, 74, 0.38, '#d99b78', '#782238');
+        drawMapleLeaf(ctx, 145, 1690, 82, -0.3, '#e3ab88', '#6e1d32');
+        drawMapleLeaf(ctx, 935, 1690, 82, 0.3, '#e3ab88', '#6e1d32');
+      } else {
+        // FONDO 1 (DEFAULT): LUZ DE VELAS (ÁMBAR CÁLIDO Y VELAS ENCENDIDAS)
+        const g = ctx.createRadialGradient(W / 2, H * 0.52, 60, W / 2, H * 0.5, 1180);
+        g.addColorStop(0, '#592e10');
+        g.addColorStop(0.48, '#331807');
+        g.addColorStop(0.86, '#1a0b03');
+        g.addColorStop(1, '#0b0401');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+
+        // Bokeh cálido de banquete
+        const bokeh = [
+          [190, 460, 140], [890, 480, 150],
+          [130, 960, 120], [950, 940, 130],
+          [260, 1440, 160], [820, 1460, 160],
+          [540, 1560, 210]
+        ];
+        bokeh.forEach(([bx, by, br]) => {
+          const bg = ctx.createRadialGradient(bx, by, 8, bx, by, br);
+          bg.addColorStop(0, 'rgba(255, 198, 108, 0.26)');
+          bg.addColorStop(0.6, 'rgba(220, 126, 38, 0.10)');
+          bg.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = bg;
+          ctx.beginPath();
+          ctx.arc(bx, by, br, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Velas laterales y en base inferior (enmarcan sin tapar el texto central)
+        drawCandle(ctx, 118, 1665, 42, 185, 1.05);
+        drawCandle(ctx, 178, 1715, 36, 135, 0.88);
+        drawCandle(ctx, W - 118, 1665, 42, 185, 1.05);
+        drawCandle(ctx, W - 178, 1715, 36, 135, 0.88);
+
+        // Velas altas sutiles a media altura en los extremos
+        drawCandle(ctx, 96, 840, 28, 125, 0.78);
+        drawCandle(ctx, W - 96, 840, 28, 125, 0.78);
+      }
+
+      const dataUrl = c.toDataURL('image/jpeg', 0.92);
+      generatedThemeCache[themeKey] = dataUrl;
+      return dataUrl;
+    }
+
+    function applyTheme(key) {
+      currentTheme = key;
+      const bgImg = document.getElementById('cardBgImg');
+      bgImg.src = renderThemeBackgroundDataUrl(key);
+    }
+
+    function updateBgIntensity(val) {
+      bgIntensity = Number(val) / 100;
+      document.getElementById('cardBgImg').style.opacity = bgIntensity;
+    }
+
+    function handleCustomBg(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        currentTheme = 'custom';
+        document.getElementById('cardBgImg').src = e.target.result;
+        showToast('\u2705 <strong>Fondo personalizado cargado</strong> correctamente.');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    /* ===== LÓGICA DE WHATSAPP E INVITADOS ===== */
     function normalizeEcuadorPhone(raw) {
       let digits = String(raw || '').replace(/\D/g, '');
       if (!digits) return '';
@@ -898,12 +1252,6 @@
     function resetToneTemplate() {
       manualMessageEdit = false;
       syncAll();
-    }
-
-    function applyTheme(key) {
-      currentTheme = key;
-      const t = THEMES[key] || THEMES.candles;
-      document.getElementById('cardBgImg').src = t.photo;
     }
 
     function syncAll() {
@@ -1087,42 +1435,38 @@
       canvas.height = H;
       const ctx = canvas.getContext('2d');
 
-      const theme = THEMES[currentTheme] || THEMES.candles;
-      const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
-      bgGrad.addColorStop(0, '#000000');
-      bgGrad.addColorStop(0.28, theme.topColor);
-      bgGrad.addColorStop(1, theme.bottomColor);
-      ctx.fillStyle = bgGrad;
+      ctx.fillStyle = '#080605';
       ctx.fillRect(0, 0, W, H);
 
+      // Dibujar el fondo activo con la intensidad elegida
       const bgImg = document.getElementById('cardBgImg');
       if (bgImg && bgImg.complete && bgImg.naturalWidth > 0) {
-        try {
-          ctx.save();
-          ctx.globalAlpha = 0.32;
-          const scale = Math.max(W / bgImg.naturalWidth, H / bgImg.naturalHeight);
-          const dw = bgImg.naturalWidth * scale;
-          const dh = bgImg.naturalHeight * scale;
-          ctx.drawImage(bgImg, (W - dw) / 2, (H - dh) / 2, dw, dh);
-          ctx.restore();
-        } catch (e) {}
+        ctx.save();
+        ctx.globalAlpha = bgIntensity;
+        const scale = Math.max(W / bgImg.naturalWidth, H / bgImg.naturalHeight);
+        const dw = bgImg.naturalWidth * scale;
+        const dh = bgImg.naturalHeight * scale;
+        ctx.drawImage(bgImg, (W - dw) / 2, (H - dh) / 2, dw, dh);
+        ctx.restore();
       }
 
-      const vignette = ctx.createRadialGradient(W / 2, 230, 80, W / 2, 420, 1450);
-      vignette.addColorStop(0, 'rgba(0,0,0,0.96)');
-      vignette.addColorStop(0.32, 'rgba(0,0,0,0.86)');
-      vignette.addColorStop(0.68, 'rgba(12,7,4,0.68)');
-      vignette.addColorStop(1, 'rgba(5,3,2,0.94)');
-      ctx.fillStyle = vignette;
+      // Viñeta superior negra solo detrás del logotipo CIMAJ
+      const topOverlay = ctx.createLinearGradient(0, 0, 0, H);
+      topOverlay.addColorStop(0, '#000000');
+      topOverlay.addColorStop(0.13, 'rgba(0, 0, 0, 0.96)');
+      topOverlay.addColorStop(0.25, 'rgba(0, 0, 0, 0.28)');
+      topOverlay.addColorStop(0.76, 'rgba(0, 0, 0, 0.34)');
+      topOverlay.addColorStop(1, 'rgba(0, 0, 0, 0.62)');
+      ctx.fillStyle = topOverlay;
       ctx.fillRect(0, 0, W, H);
 
       // Marcos dorados dobles
-      ctx.strokeStyle = 'rgba(212, 175, 106, 0.72)';
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.78)';
+      ctx.lineWidth = 3.2;
       ctx.strokeRect(36, 36, W - 72, H - 72);
 
-      ctx.strokeStyle = 'rgba(212, 175, 106, 0.35)';
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.38)';
+      ctx.lineWidth = 1.6;
       ctx.strokeRect(52, 52, W - 104, H - 104);
 
       // Logotipo CIMAJ sin bordes
@@ -1139,7 +1483,11 @@
         } catch (e) {}
       }
 
+      ctx.save();
       ctx.textAlign = 'center';
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.92)';
+      ctx.shadowBlur = 14;
+      ctx.shadowOffsetY = 3;
 
       // Título caligráfico
       ctx.fillStyle = '#f0d7a2';
@@ -1149,13 +1497,13 @@
       // Línea ornamental
       const lineGrad = ctx.createLinearGradient(W / 2 - 220, 0, W / 2 + 220, 0);
       lineGrad.addColorStop(0, 'rgba(212,175,106,0)');
-      lineGrad.addColorStop(0.5, 'rgba(212,175,106,0.9)');
+      lineGrad.addColorStop(0.5, 'rgba(240,215,162,0.95)');
       lineGrad.addColorStop(1, 'rgba(212,175,106,0)');
       ctx.fillStyle = lineGrad;
-      ctx.fillRect(W / 2 - 220, 444, 440, 2.5);
+      ctx.fillRect(W / 2 - 220, 444, 440, 3);
 
       // Saludo e invitado
-      ctx.fillStyle = '#d4af6a';
+      ctx.fillStyle = '#f0d7a2';
       ctx.font = 'italic 38px "Cormorant Garamond", Georgia, serif';
       ctx.fillText('Estimado/a', W / 2, 520);
 
@@ -1164,7 +1512,7 @@
       wrapCanvasText(ctx, guestName || 'Invitado/a Especial', W / 2, 598, 860, 74);
 
       // Dedicatoria
-      ctx.fillStyle = '#dfd3be';
+      ctx.fillStyle = '#fbf7ef';
       ctx.font = 'italic 40px "Cormorant Garamond", Georgia, serif';
       wrapCanvasText(
         ctx,
@@ -1176,12 +1524,13 @@
       );
 
       // Bloque Fecha / Hora
-      ctx.fillStyle = 'rgba(212, 175, 106, 0.42)';
-      ctx.fillRect(110, 885, W - 220, 2);
-      ctx.fillRect(110, 1070, W - 220, 2);
-
-      ctx.fillRect(W / 2 - 195, 908, 2, 140);
-      ctx.fillRect(W / 2 + 195, 908, 2, 140);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+      ctx.fillRect(110, 885, W - 220, 185);
+      ctx.fillStyle = 'rgba(212, 175, 106, 0.55)';
+      ctx.fillRect(110, 885, W - 220, 2.5);
+      ctx.fillRect(110, 1070, W - 220, 2.5);
+      ctx.fillRect(W / 2 - 195, 908, 2.5, 140);
+      ctx.fillRect(W / 2 + 195, 908, 2.5, 140);
 
       const hora = (document.getElementById('inHora').value.trim() || '19H30').toUpperCase();
       ctx.fillStyle = '#f0d7a2';
@@ -1193,8 +1542,8 @@
       ctx.font = '700 94px "Cormorant Garamond", Georgia, serif';
       ctx.fillText('26', W / 2, 988);
 
-      ctx.fillStyle = '#d4af6a';
-      ctx.font = '600 22px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
       ctx.fillText('NOVIEMBRE \u00B7 2026', W / 2, 1034);
 
       // Sede y Dirección
@@ -1203,14 +1552,14 @@
       const etiqueta = document.getElementById('inEtiqueta').value.trim() || 'Traje Formal';
 
       ctx.fillStyle = '#fbf7ef';
-      ctx.font = '600 46px "Cormorant Garamond", Georgia, serif';
+      ctx.font = '700 46px "Cormorant Garamond", Georgia, serif';
       ctx.fillText(lugar, W / 2, 1165);
 
-      ctx.fillStyle = '#d4af6a';
+      ctx.fillStyle = '#f0d7a2';
       ctx.font = '700 22px "Plus Jakarta Sans", sans-serif';
       ctx.fillText('DIRECCI\u00D3N', W / 2, 1228);
 
-      ctx.fillStyle = '#dfd3be';
+      ctx.fillStyle = '#fbf7ef';
       ctx.font = '400 32px "Plus Jakarta Sans", sans-serif';
       const lastAddrY = wrapCanvasText(ctx, direccion, W / 2, 1280, 840, 42);
 
@@ -1218,9 +1567,9 @@
       const btnY = lastAddrY + 34;
       const btnW = 470;
       const btnH = 58;
-      ctx.fillStyle = 'rgba(212, 175, 106, 0.18)';
-      ctx.strokeStyle = 'rgba(212, 175, 106, 0.8)';
-      ctx.lineWidth = 2;
+      ctx.fillStyle = 'rgba(12, 10, 8, 0.65)';
+      ctx.strokeStyle = 'rgba(212, 175, 106, 0.88)';
+      ctx.lineWidth = 2.2;
       ctx.beginPath();
       ctx.roundRect((W - btnW) / 2, btnY, btnW, btnH, 29);
       ctx.fill();
@@ -1235,17 +1584,18 @@
       ctx.font = 'italic 36px "Cormorant Garamond", Georgia, serif';
       ctx.fillText(etiqueta, W / 2, 1555);
 
-      ctx.fillStyle = '#bcae96';
+      ctx.fillStyle = '#ebe1cf';
       ctx.font = 'italic 32px "Cormorant Garamond", Georgia, serif';
       ctx.fillText('Agradecemos confirmar su grata asistencia', W / 2, 1612);
 
       // Pie institucional
-      ctx.fillStyle = 'rgba(212, 175, 106, 0.32)';
+      ctx.fillStyle = 'rgba(212, 175, 106, 0.42)';
       ctx.fillRect(110, 1750, W - 220, 2);
 
-      ctx.fillStyle = '#d4af6a';
-      ctx.font = '600 30px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#f0d7a2';
+      ctx.font = '700 30px "Plus Jakarta Sans", sans-serif';
       ctx.fillText('www.cimaj.gt.tc', W / 2, 1812);
+      ctx.restore();
 
       return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
     }
@@ -1296,7 +1646,6 @@
       const phone = normalizeEcuadorPhone(guest.phone);
       const message = document.getElementById('waMessagePreview').value;
 
-      // Copia síncrona del PNG al portapapeles antes de abrir WhatsApp
       try {
         if (navigator.clipboard && window.ClipboardItem) {
           const item = new ClipboardItem({
@@ -1320,6 +1669,8 @@
       window.open(waUrl, '_blank', 'noopener');
     }
 
+    // Inicialización inmediata
+    applyTheme('candles');
     renderGuestList();
     syncAll();
   </script>
