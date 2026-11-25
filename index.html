@@ -3,28 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación Acción de Gracias 2026 — CIMAJ (Formato 9:16)</title>
+  <title>Cena de Acción de Gracias 2026 — CIMAJ</title>
 
-  <!-- Tipografías Institucionales de Google Fonts -->
+  <!-- Tipografías de Alta Papelería y Gala Editorial -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS para controles de interfaz -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- html2canvas para exportación exacta a PNG en alta resolución (1080x1920 px) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <style>
     :root {
-      --obsidian-top: #05080f;
-      --navy-bottom: #0b172a;
-      --gold-champagne: #c9a86a;
-      --amber-warm: #d49b54;
-      --gold-soft: #e6cfa3;
-      --ivory-text: #f8fafc;
-      --slate-soft: #cbd5e1;
+      --obsidian-velvet: #050404;
+      --espresso-deep: #140b08;
+      --burgundy-warm: #2b110d;
+      --gold-champagne: #d8b979;
+      --gold-bright: #f2dfb3;
+      --amber-candle: #e09f56;
+      --cream-parchment: #fbf6ec;
+      --cream-muted: #e5d8c3;
       --card-w: 540px;
       --card-h: 960px;
     }
@@ -37,103 +35,142 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #111622;
-      background-image: radial-gradient(rgba(201, 168, 106, 0.14) 1px, transparent 1px);
-      background-size: 24px 24px;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--ivory-text);
+      background-color: #0b0908;
+      background-image: radial-gradient(rgba(216, 185, 121, 0.12) 1px, transparent 1px);
+      background-size: 26px 26px;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--cream-parchment);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    .font-serif-inst {
-      font-family: 'Playfair Display', Georgia, serif;
+    .font-script {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .font-editorial {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-micro {
+      font-family: 'Montserrat', sans-serif;
     }
 
     /* ==========================================================================
-       BARRA DE CONTROL SUPERIOR (OCULTA EN IMPRESIÓN / PDF)
+       BARRA SUPERIOR DE CONTROLES (NO SE IMPRIME)
        ========================================================================== */
-    .control-bar {
+    .studio-toolbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(5, 8, 15, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 168, 106, 0.35);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      background: rgba(10, 8, 7, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(216, 185, 121, 0.28);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65);
     }
 
-    .ctrl-btn {
+    .tool-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.45rem;
-      padding: 0.55rem 0.9rem;
+      padding: 0.52rem 0.88rem;
       border-radius: 0.5rem;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.06);
-      color: #f8fafc;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(216, 185, 121, 0.24);
+      background: rgba(255, 255, 255, 0.04);
+      color: #f5ebd9;
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
 
-    .ctrl-btn:hover {
-      background: rgba(201, 168, 106, 0.18);
+    .tool-btn:hover {
+      background: rgba(216, 185, 121, 0.15);
       border-color: var(--gold-champagne);
       color: #ffffff;
     }
 
-    .ctrl-btn-primary {
-      background: linear-gradient(135deg, #d49b54 0%, #c9a86a 55%, #a8823c 100%);
-      color: #05080f;
-      border: 1px solid #e6cfa3;
+    .tool-btn-gold {
+      background: linear-gradient(135deg, #e5c685 0%, #c8a258 55%, #9f7934 100%);
+      color: #090605;
+      border: 1px solid #f5e2b8;
       font-weight: 700;
-      box-shadow: 0 4px 16px rgba(201, 168, 106, 0.32);
+      box-shadow: 0 4px 18px rgba(216, 185, 121, 0.28);
     }
 
-    .ctrl-btn-primary:hover {
-      filter: brightness(1.06);
-      color: #05080f;
+    .tool-btn-gold:hover {
+      filter: brightness(1.07);
+      color: #050404;
     }
 
-    .ctrl-btn-primary:disabled {
+    .tool-btn-gold:disabled {
       opacity: 0.65;
       cursor: wait;
     }
 
-    .quick-guest-input {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(201, 168, 106, 0.45);
-      color: #ffffff;
+    .guest-bar-input,
+    .ambiance-select {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(216, 185, 121, 0.35);
+      color: #fbf6ec;
       border-radius: 0.5rem;
-      padding: 0.48rem 0.8rem;
-      font-size: 0.82rem;
-      width: 240px;
-      max-width: 100%;
+      padding: 0.48rem 0.78rem;
+      font-size: 0.78rem;
       outline: none;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .quick-guest-input::placeholder {
-      color: rgba(203, 213, 225, 0.55);
+    .guest-bar-input {
+      width: 195px;
+      max-width: 100%;
     }
 
-    .quick-guest-input:focus {
-      border-color: var(--amber-warm);
-      box-shadow: 0 0 0 2px rgba(212, 155, 84, 0.25);
+    .meta-bar-input {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(216, 185, 121, 0.35);
+      color: #fbf6ec;
+      border-radius: 0.5rem;
+      padding: 0.48rem 0.72rem;
+      font-size: 0.78rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .meta-bar-input::placeholder {
+      color: rgba(229, 216, 195, 0.48);
+    }
+
+    .meta-bar-input:focus {
+      border-color: var(--gold-champagne);
+      box-shadow: 0 0 0 2px rgba(216, 185, 121, 0.22);
+    }
+
+    .guest-bar-input::placeholder {
+      color: rgba(229, 216, 195, 0.48);
+    }
+
+    .guest-bar-input:focus,
+    .ambiance-select:focus {
+      border-color: var(--gold-champagne);
+      box-shadow: 0 0 0 2px rgba(216, 185, 121, 0.22);
+    }
+
+    .ambiance-select option {
+      background-color: #140b08;
+      color: #fbf6ec;
     }
 
     /* ==========================================================================
-       CONTENEDOR Y TARJETA DE INVITACIÓN 9:16 (540px x 960px -> 1080x1920 al 2x)
+       LIENZO DE INVITACIÓN VERTICAL 9:16 (540x960 -> EXPORTA 1080x1920 PX)
        ========================================================================== */
-    .stage-wrapper {
+    .invitation-stage {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1rem 3.5rem 1rem;
+      padding: 2rem 1rem 4rem 1rem;
     }
 
     .card-scaler {
@@ -148,109 +185,206 @@
     #invitation-card {
       width: var(--card-w);
       height: var(--card-h);
-      background: linear-gradient(180deg, #05080f 0%, #070d19 36%, #0b172a 100%);
+      background-color: #090605;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 44px 42px 38px 42px;
-      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(201, 168, 106, 0.28);
+      padding: 36px 42px 34px 42px;
+      box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(216, 185, 121, 0.35);
       transform-origin: top center;
       flex-shrink: 0;
     }
 
-    /* Marcos geométricos arquitectónicos finos en dorado champán y ámbar cálido */
-    .frame-outer {
+    /* Capas de fondo fotográfico y atmósfera de cena a la luz de las velas */
+    .bg-photo-layer {
       position: absolute;
-      inset: 16px;
-      border: 1px solid rgba(201, 168, 106, 0.42);
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .frame-inner {
-      position: absolute;
-      inset: 23px;
-      border: 1px solid rgba(212, 155, 84, 0.22);
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    /* Esquineros geométricos sobrios */
-    .geo-corner {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-color: var(--gold-champagne);
-      border-style: solid;
-      pointer-events: none;
-      z-index: 6;
-    }
-    .geo-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-    .geo-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-    .geo-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-    .geo-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-
-    /* Resplandor ambiental cálido muy sutil detrás del logotipo */
-    .ambient-glow {
-      position: absolute;
-      top: -90px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 420px;
-      height: 260px;
-      background: radial-gradient(ellipse at center, rgba(212, 155, 84, 0.14) 0%, rgba(5, 8, 15, 0) 72%);
-      pointer-events: none;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       z-index: 1;
+      transition: filter 0.45s ease, opacity 0.45s ease;
+    }
+
+    .bg-illustrated-fallback {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Viñeta superior obsidiana pura (#000000) para fundir el logo sin recuadros */
+    .top-obsidian-veil {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 310px;
+      background: linear-gradient(
+        180deg,
+        #000000 0%,
+        #000000 34%,
+        rgba(5, 3, 3, 0.88) 62%,
+        rgba(12, 7, 5, 0) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Atmósfera cálida ajustable sobre toda la tarjeta */
+    .ambiance-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      transition: background 0.45s ease;
+    }
+
+    /* Ambiente 1: Mesa a la Luz de las Velas (Por defecto) */
+    #invitation-card[data-ambiance="candles"] .bg-photo-layer {
+      filter: brightness(0.62) contrast(1.12) saturate(1.18);
+    }
+    #invitation-card[data-ambiance="candles"] .ambiance-overlay {
+      background:
+        radial-gradient(circle at 50% 48%, rgba(224, 159, 86, 0.14) 0%, rgba(16, 8, 6, 0.62) 68%, rgba(5, 3, 3, 0.92) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(20, 10, 7, 0.56) 52%, rgba(7, 4, 3, 0.94) 100%);
+    }
+
+    /* Ambiente 2: Cosecha Dorada de Otoño */
+    #invitation-card[data-ambiance="harvest"] .bg-photo-layer {
+      filter: brightness(0.68) contrast(1.08) sepia(0.22) saturate(1.35);
+    }
+    #invitation-card[data-ambiance="harvest"] .ambiance-overlay {
+      background:
+        radial-gradient(circle at 50% 45%, rgba(235, 179, 92, 0.22) 0%, rgba(36, 18, 9, 0.58) 68%, rgba(8, 5, 3, 0.92) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(32, 16, 8, 0.52) 55%, rgba(9, 5, 3, 0.94) 100%);
+    }
+
+    /* Ambiente 3: Velada de Gala */
+    #invitation-card[data-ambiance="intimate"] .bg-photo-layer {
+      filter: brightness(0.54) contrast(1.18) saturate(1.12);
+    }
+    #invitation-card[data-ambiance="intimate"] .ambiance-overlay {
+      background:
+        radial-gradient(circle at 50% 48%, rgba(168, 72, 58, 0.18) 0%, rgba(24, 8, 10, 0.68) 68%, rgba(4, 2, 3, 0.95) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(26, 9, 11, 0.62) 52%, rgba(5, 3, 4, 0.96) 100%);
     }
 
     /* ==========================================================================
-       LOGOTIPO OFICIAL DE CIMAJ (SIN DISTORSIÓN Y CON FUSIÓN LIMPIA)
+       DOBLE MARCO DE ALTA PAPELERÍA Y FILIGRANAS BOTÁNICAS EN LAS ESQUINAS
        ========================================================================== */
-    .logo-header-box {
+    .stationery-border-outer {
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(216, 185, 121, 0.58);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    .stationery-border-inner {
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(216, 185, 121, 0.28);
+      pointer-events: none;
+      z-index: 8;
+    }
+
+    .corner-filigree {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      z-index: 9;
+      pointer-events: none;
+      color: var(--gold-champagne);
+    }
+    .filigree-tl { top: 14px; left: 14px; }
+    .filigree-tr { top: 14px; right: 14px; transform: scaleX(-1); }
+    .filigree-bl { bottom: 14px; left: 14px; transform: scaleY(-1); }
+    .filigree-br { bottom: 14px; right: 14px; transform: scale(-1, -1); }
+
+    /* ==========================================================================
+       LOGOTIPO OFICIAL DE CIMAJ INTEGRADO SIN RECUADROS (mix-blend-mode: screen)
+       ========================================================================== */
+    .crest-zone {
       position: relative;
-      z-index: 10;
+      z-index: 12;
       width: 100%;
-      height: 108px;
+      height: 118px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-top: 4px;
     }
 
-    #cimaj-logo-img {
-      max-width: 275px;
-      max-height: 106px;
+    #cimaj-crest-img {
+      max-width: 280px;
+      max-height: 112px;
       width: auto;
       height: auto;
       object-fit: contain;
       mix-blend-mode: screen;
-      display: none;
-      user-select: none;
-    }
-
-    .logo-header-box.has-logo #cimaj-logo-img {
       display: block;
+      user-select: none;
+      filter: contrast(1.06) brightness(1.04);
     }
 
-    .logo-header-box.has-logo #cimaj-fallback-emblem {
+    .crest-zone.crest-fallback #cimaj-crest-img {
       display: none;
     }
 
-    /* Emblema tipográfico elegante de respaldo antes de subir la imagen */
-    .fallback-emblem {
+    .crest-zone.crest-fallback #cimaj-crest-text {
       display: flex;
+    }
+
+    .crest-text-backup {
+      display: none;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 8px 18px;
-      border-bottom: 1px solid rgba(201, 168, 106, 0.45);
     }
 
     /* ==========================================================================
-       EDICIÓN DIRECTA EN PANTALLA (contenteditable)
+       TIPOGRAFÍA CALIGRÁFICA Y EDITORIAL DE LA INVITACIÓN
        ========================================================================== */
+    .script-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 54px;
+      line-height: 1.06;
+      font-weight: 400;
+      color: #f4dfb4;
+      text-shadow:
+        0 2px 14px rgba(0, 0, 0, 0.85),
+        0 0 28px rgba(224, 159, 86, 0.32);
+      padding: 2px 6px;
+    }
+
+    .guest-hero-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 1.18;
+      color: #ffffff;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
+      letter-spacing: 0.01em;
+    }
+
+    .date-hero-numeral {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: 56px;
+      line-height: 0.92;
+      color: #f4dfb4;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Edición en vivo sutil */
     [contenteditable="true"] {
       outline: none;
       border-radius: 4px;
@@ -258,53 +392,95 @@
     }
 
     [contenteditable="true"]:hover {
-      background-color: rgba(201, 168, 106, 0.12);
-      box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.48);
+      background-color: rgba(216, 185, 121, 0.14);
+      box-shadow: 0 0 0 1px rgba(216, 185, 121, 0.45);
       cursor: text;
     }
 
     [contenteditable="true"]:focus {
-      background-color: rgba(212, 155, 84, 0.16);
-      box-shadow: 0 0 0 1.5px var(--amber-warm);
+      background-color: rgba(216, 185, 121, 0.2);
+      box-shadow: 0 0 0 1.5px var(--gold-champagne);
     }
 
-    /* Desactivar resaltado de edición durante la captura con html2canvas */
-    #invitation-card.capturing [contenteditable="true"] {
+    #invitation-card.is-exporting [contenteditable="true"] {
       background-color: transparent !important;
       box-shadow: none !important;
     }
 
     /* ==========================================================================
-       NOTIFICACIÓN TOAST (OCULTA EN IMPRESIÓN)
+       PANEL DESLIZABLE DE LISTADO DE INVITADOS
        ========================================================================== */
-    .toast-msg {
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
+      backdrop-filter: blur(4px);
+      z-index: 1400;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .guest-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      max-width: 92vw;
+      background: #0d0a09;
+      border-left: 1px solid rgba(216, 185, 121, 0.35);
+      box-shadow: -20px 0 50px rgba(0, 0, 0, 0.8);
+      z-index: 1500;
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .guest-drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Toast de estado */
+    .toast-pill {
       position: fixed;
       bottom: 1.25rem;
-      right: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(14px);
       z-index: 2000;
-      background: #05080f;
-      color: #f8fafc;
+      background: rgba(10, 8, 7, 0.96);
+      color: #fbf6ec;
       border: 1px solid var(--gold-champagne);
-      border-radius: 0.65rem;
-      padding: 0.75rem 1.1rem;
-      font-size: 0.8rem;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+      border-radius: 999px;
+      padding: 0.65rem 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.75);
       display: flex;
       align-items: center;
       gap: 0.55rem;
       opacity: 0;
-      transform: translateY(10px);
       pointer-events: none;
       transition: all 0.25s ease;
+      white-space: nowrap;
+      max-width: 92vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .toast-msg.show {
+    .toast-pill.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
 
     /* ==========================================================================
-       EXPORTACIÓN A PDF / IMPRESIÓN ESTRICTA 9:16 (108mm x 192mm SIN MÁRGENES)
+       IMPRESIÓN Y EXPORTACIÓN PDF SIN BORDES (9:16 -> 108mm x 192mm)
        ========================================================================== */
     @page {
       size: 108mm 192mm;
@@ -319,7 +495,7 @@
       html, body {
         margin: 0 !important;
         padding: 0 !important;
-        background: #05080f !important;
+        background: #050404 !important;
         width: 108mm !important;
         height: 192mm !important;
         overflow: hidden !important;
@@ -327,7 +503,7 @@
         print-color-adjust: exact !important;
       }
 
-      .stage-wrapper {
+      .invitation-stage {
         padding: 0 !important;
         margin: 0 !important;
         display: block !important;
@@ -345,7 +521,6 @@
         width: 100% !important;
         height: 100% !important;
         box-shadow: none !important;
-        border-radius: 0 !important;
       }
 
       [contenteditable="true"] {
@@ -358,342 +533,592 @@
 <body>
 
   <!-- ========================================================================
-       BARRA SUPERIOR DE CONTROL (NO VISIBLE AL EXPORTAR)
+       BARRA SUPERIOR DE ESTUDIO (NO VISIBLE EN EXPORTACIÓN)
        ======================================================================== -->
-  <header class="control-bar no-print">
-    <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3">
-      <!-- Identificador -->
+  <header class="studio-toolbar no-print">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+      <!-- Identificador de pieza -->
       <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg flex items-center justify-center font-serif-inst font-bold text-sm"
-             style="background: linear-gradient(135deg, #d49b54, #c9a86a); color: #05080f;">
-          C
-        </div>
+        <span class="w-2.5 h-2.5 rotate-45 bg-[#d8b979] inline-block shrink-0"></span>
         <div>
-          <div class="text-xs font-bold tracking-wider uppercase text-[#e6cfa3]">Invitación Thanksgiving 2026</div>
-          <div class="text-[11px] text-slate-400">Formato Vertical 9:16 (1080×1920 px) · Edición en vivo</div>
+          <div class="text-xs font-bold tracking-wider uppercase text-[#f2dfb3]">Papelería Digital · Cena de Acción de Gracias</div>
+          <div class="text-[11px] text-[#e5d8c3]/70">Formato 9:16 (1080×1920 px) · Edición directa en tarjeta</div>
         </div>
       </div>
 
-      <!-- Controles de personalización rápida y descarga -->
+      <!-- Controles de personalización y descarga -->
       <div class="flex flex-wrap items-center gap-2">
-        <!-- 1. Subir Logotipo Oficial de CIMAJ -->
-        <label class="ctrl-btn" title="Subir logotipo oficial de CIMAJ (png_01.jpg)">
-          <svg class="w-4 h-4 text-[#d49b54]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          <span>Subir Logo CIMAJ</span>
-          <input type="file" id="logo-file-input" accept="image/png,image/jpeg,image/webp,image/svg+xml" class="hidden" />
-        </label>
-
-        <!-- 2. Campo rápido "Nombre del Invitado" sincronizado en tiempo real -->
+        <!-- Input rápido Invitado(a) -->
         <div class="flex items-center gap-1.5">
-          <label for="quick-guest-input" class="text-[11px] font-semibold text-[#c9a86a] hidden sm:inline">Invitado:</label>
+          <label for="quick-guest-input" class="text-[11px] font-semibold text-[#d8b979] hidden sm:inline">Invitado:</label>
           <input
             type="text"
             id="quick-guest-input"
-            class="quick-guest-input"
-            placeholder="Nombre del Invitado..."
+            class="guest-bar-input"
+            placeholder="Invitado Especial..."
             aria-label="Nombre del Invitado"
           />
         </div>
 
-        <!-- 3. Botón Descargar PNG (9:16) a 1080x1920 px -->
-        <button type="button" id="btn-download-png" class="ctrl-btn ctrl-btn-primary">
+        <!-- Input rápido Hora -->
+        <div class="flex items-center gap-1.5">
+          <label for="quick-time-input" class="text-[11px] font-semibold text-[#d8b979] hidden md:inline">Hora:</label>
+          <input
+            type="text"
+            id="quick-time-input"
+            class="meta-bar-input w-24"
+            value="19h30"
+            placeholder="19h30"
+            aria-label="Hora del evento"
+          />
+        </div>
+
+        <!-- Input rápido Dirección (persistente en descargas por lote) -->
+        <div class="flex items-center gap-1.5">
+          <label for="quick-address-input" class="text-[11px] font-semibold text-[#d8b979] hidden lg:inline">Dirección:</label>
+          <input
+            type="text"
+            id="quick-address-input"
+            class="meta-bar-input w-48"
+            placeholder="Dirección exacta..."
+            aria-label="Dirección del evento"
+          />
+        </div>
+
+        <!-- Selector de Ambiente de Cena -->
+        <select id="ambiance-selector" class="ambiance-select" aria-label="Ambiente visual de la cena">
+          <option value="candles">Mesa a la Luz de las Velas</option>
+          <option value="harvest">Cosecha Dorada</option>
+          <option value="intimate">Velada de Gala</option>
+        </select>
+
+        <!-- Botón Listado de Invitados -->
+        <button type="button" id="btn-open-drawer" class="tool-btn">
+          <svg class="w-4 h-4 text-[#d8b979]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>Listado de Invitados</span>
+        </button>
+
+        <!-- Botón Principal Descargar PNG (9:16) -->
+        <button type="button" id="btn-download-png" class="tool-btn tool-btn-gold">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-          <span>Descargar PNG (9:16)</span>
+          <span>Descargar PNG (1080×1920)</span>
         </button>
 
-        <!-- 4. Botón Secundario Imprimir / PDF -->
-        <button type="button" id="btn-print-pdf" class="ctrl-btn">
-          <svg class="w-4 h-4 text-[#c9a86a]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <!-- Botón Secundario Imprimir / PDF -->
+        <button type="button" id="btn-print-pdf" class="tool-btn">
+          <svg class="w-4 h-4 text-[#d8b979]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
           </svg>
           <span>Imprimir / PDF</span>
-        </button>
-
-        <!-- 5. Botón Restaurar Textos -->
-        <button type="button" id="btn-reset-text" class="ctrl-btn" title="Restaurar los textos al borrador base">
-          <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          <span>Restaurar textos</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- ========================================================================
-       LIENZO CENTRAL: TARJETA DIGITAL DE INVITACIÓN 9:16 (540px x 960px)
+       TARJETA DE INVITACIÓN DE GALA (9:16 · 540x960 PX -> 1080x1920 PX)
        ======================================================================== -->
-  <main class="stage-wrapper">
+  <main class="invitation-stage">
     <div class="card-scaler" id="card-scaler">
-      <article id="invitation-card">
-        <!-- Resplandor cálido y marcos geométricos finos -->
-        <div class="ambient-glow"></div>
-        <div class="frame-outer"></div>
-        <div class="frame-inner"></div>
-        <div class="geo-corner geo-tl"></div>
-        <div class="geo-corner geo-tr"></div>
-        <div class="geo-corner geo-bl"></div>
-        <div class="geo-corner geo-br"></div>
+      <article id="invitation-card" data-ambiance="candles">
 
-        <!-- 1. CABECERA SUPERIOR: LOGOTIPO OFICIAL DE CIMAJ CENTRADO -->
-        <header class="logo-header-box" id="logo-header-box">
-          <img id="cimaj-logo-img" alt="Logotipo Oficial CIMAJ" />
-          <div id="cimaj-fallback-emblem" class="fallback-emblem">
-            <div class="font-serif-inst text-[34px] font-bold tracking-[0.26em] text-white leading-none pl-[0.26em]">
-              CIMAJ
-            </div>
-            <div class="text-[7.5px] font-semibold tracking-[0.16em] uppercase text-[#c9a86a] mt-2">
+        <!-- Capa 0: Ilustración Artística Vectorial de Cena de Acción de Gracias (Respaldo Offline / CORS) -->
+        <svg class="bg-illustrated-fallback" viewBox="0 0 540 960" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <radialGradient id="warmHearth" cx="50%" cy="48%" r="62%">
+              <stop offset="0%" stop-color="#5c2814" />
+              <stop offset="48%" stop-color="#26100b" />
+              <stop offset="100%" stop-color="#070404" />
+            </radialGradient>
+            <radialGradient id="candleGlow1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd584" stop-opacity="0.72" />
+              <stop offset="45%" stop-color="#e08b36" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#e08b36" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="bokehOrb" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffe3a8" stop-opacity="0.55" />
+              <stop offset="70%" stop-color="#d89b48" stop-opacity="0.16" />
+              <stop offset="100%" stop-color="#d89b48" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <rect width="540" height="960" fill="url(#warmHearth)" />
+          <!-- Destellos cálidos de velas en mesa -->
+          <circle cx="115" cy="430" r="130" fill="url(#candleGlow1)" />
+          <circle cx="430" cy="460" r="145" fill="url(#candleGlow1)" />
+          <circle cx="270" cy="670" r="190" fill="url(#candleGlow1)" />
+          <!-- Orbes bokeh dorados -->
+          <circle cx="88" cy="340" r="24" fill="url(#bokehOrb)" />
+          <circle cx="462" cy="365" r="30" fill="url(#bokehOrb)" />
+          <circle cx="142" cy="590" r="18" fill="url(#bokehOrb)" />
+          <circle cx="410" cy="635" r="26" fill="url(#bokehOrb)" />
+          <circle cx="95" cy="790" r="34" fill="url(#bokehOrb)" />
+          <circle cx="445" cy="810" r="22" fill="url(#bokehOrb)" />
+          <!-- Hojas de otoño y espigas sutiles en los márgenes -->
+          <g stroke="#d8b979" stroke-opacity="0.18" fill="none" stroke-width="1.2">
+            <path d="M36 520 C75 495, 105 460, 122 415" />
+            <ellipse cx="78" cy="488" rx="14" ry="6" transform="rotate(-32 78 488)" />
+            <ellipse cx="98" cy="462" rx="14" ry="6" transform="rotate(-38 98 462)" />
+            <ellipse cx="114" cy="434" rx="12" ry="5" transform="rotate(-45 114 434)" />
+            <path d="M504 540 C465 515, 435 480, 418 435" />
+            <ellipse cx="462" cy="508" rx="14" ry="6" transform="rotate(32 462 508)" />
+            <ellipse cx="442" cy="482" rx="14" ry="6" transform="rotate(38 442 482)" />
+            <ellipse cx="426" cy="454" rx="12" ry="5" transform="rotate(45 426 454)" />
+          </g>
+        </svg>
+
+        <!-- Capa 1: Fotografía Atmosférica de Cena de Acción de Gracias a la Luz de las Velas -->
+        <img
+          id="bg-dinner-photo"
+          class="bg-photo-layer"
+          src="https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=85"
+          crossorigin="anonymous"
+          alt="Mesa festiva de Cena de Acción de Gracias iluminada con velas"
+        />
+
+        <!-- Capa 2: Viñeta superior obsidiana pura para integración perfecta del logotipo metálico -->
+        <div class="top-obsidian-veil"></div>
+
+        <!-- Capa 3: Tinte atmosférico cálido -->
+        <div class="ambiance-overlay"></div>
+
+        <!-- Marcos finos de papelería formal y esquineros botánicos -->
+        <div class="stationery-border-outer"></div>
+        <div class="stationery-border-inner"></div>
+
+        <!-- Filigranas botánicas de esquina -->
+        <svg class="corner-filigree filigree-tl" viewBox="0 0 48 48" fill="none">
+          <path d="M4 34V10C4 6.686 6.686 4 10 4H34" stroke="currentColor" stroke-width="1.3" />
+          <path d="M10 26C10 17.163 17.163 10 26 10" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7" />
+          <path d="M14 14C17 14 19 16 19 19C16 19 14 17 14 14Z" fill="currentColor" fill-opacity="0.65" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg class="corner-filigree filigree-tr" viewBox="0 0 48 48" fill="none">
+          <path d="M4 34V10C4 6.686 6.686 4 10 4H34" stroke="currentColor" stroke-width="1.3" />
+          <path d="M10 26C10 17.163 17.163 10 26 10" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7" />
+          <path d="M14 14C17 14 19 16 19 19C16 19 14 17 14 14Z" fill="currentColor" fill-opacity="0.65" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg class="corner-filigree filigree-bl" viewBox="0 0 48 48" fill="none">
+          <path d="M4 34V10C4 6.686 6.686 4 10 4H34" stroke="currentColor" stroke-width="1.3" />
+          <path d="M10 26C10 17.163 17.163 10 26 10" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7" />
+          <path d="M14 14C17 14 19 16 19 19C16 19 14 17 14 14Z" fill="currentColor" fill-opacity="0.65" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+        <svg class="corner-filigree filigree-br" viewBox="0 0 48 48" fill="none">
+          <path d="M4 34V10C4 6.686 6.686 4 10 4H34" stroke="currentColor" stroke-width="1.3" />
+          <path d="M10 26C10 17.163 17.163 10 26 10" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7" />
+          <path d="M14 14C17 14 19 16 19 19C16 19 14 17 14 14Z" fill="currentColor" fill-opacity="0.65" />
+          <circle cx="10" cy="10" r="2" fill="currentColor" />
+        </svg>
+
+        <!-- ==================================================================
+             1. EMblema SUPERIOR INTEGRADO: LOGOTIPO OFICIAL CIMAJ SIN RECUADROS
+             ================================================================== -->
+        <header class="crest-zone" id="crest-zone">
+          <img
+            id="cimaj-crest-img"
+            src="https://raw.githubusercontent.com/direccioncomercial/cimajinvitaci-n/main/png_01.png"
+            crossorigin="anonymous"
+            alt="Logotipo Oficial CIMAJ"
+          />
+          <div id="cimaj-crest-text" class="crest-text-backup">
+            <span class="font-editorial text-[34px] font-bold tracking-[0.28em] text-white pl-[0.28em]">CIMAJ</span>
+            <span class="text-[7.5px] font-semibold tracking-[0.16em] uppercase text-[#d8b979] mt-1">
               Corporación de Indagación, Mediación, Asesoría Jurídica y Financiera
-            </div>
+            </span>
           </div>
         </header>
 
-        <!-- 2. BLOQUE CENTRAL: TÍTULO, INVITADO Y MENSAJE EJECUTIVO -->
+        <!-- ==================================================================
+             2. APERTURA DE PROTOCOLO + NOMBRE DEL INVITADO + TÍTULO CALIGRÁFICO
+             ================================================================== -->
         <section class="relative z-10 flex flex-col items-center text-center my-auto px-2">
-          <!-- Etiqueta superior -->
-          <div class="inline-flex items-center gap-2.5 mb-3">
-            <span class="h-[1px] w-6 bg-[#d49b54]"></span>
-            <span
-              id="field-kicker"
-              contenteditable="true"
-              class="text-[11px] font-bold tracking-[0.22em] uppercase text-[#e6cfa3]"
-            >
-              ENCUENTRO DE GRATITUD · EDICIÓN 2026
-            </span>
-            <span class="h-[1px] w-6 bg-[#d49b54]"></span>
-          </div>
+          <!-- Fórmulas de invitación clásica -->
+          <p
+            id="field-opening-1"
+            contenteditable="true"
+            class="font-micro text-[10.5px] font-semibold tracking-[0.26em] uppercase text-[#f2dfb3]/95 mb-2"
+          >
+            CIMAJ TIENE EL HONOR DE INVITARLE A SU
+          </p>
 
-          <!-- Título principal en Playfair Display -->
+          <!-- Título Caligráfico Principal -->
           <h1
             id="field-main-title"
             contenteditable="true"
-            class="font-serif-inst text-[48px] leading-[1.08] font-bold text-white tracking-tight"
+            class="script-title"
           >
-            Acción de Gracias
+            Cena de Acción de Gracias
           </h1>
 
-          <!-- Subtítulo dorado -->
-          <p
-            id="field-subtitle"
-            contenteditable="true"
-            class="font-serif-inst italic text-[20px] font-semibold text-[#d49b54] mt-1.5 tracking-wide"
-          >
-            Thanksgiving Institucional
-          </p>
-
-          <!-- Separador geométrico fino -->
-          <div class="flex items-center justify-center gap-2 my-5 w-40">
-            <span class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#c9a86a]"></span>
-            <span class="w-1.5 h-1.5 rotate-45 bg-[#d49b54]"></span>
-            <span class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#c9a86a]"></span>
+          <!-- Divisor Botánico de Espiga de Trigo y Olivo -->
+          <div class="my-2.5 flex items-center justify-center w-56 text-[#d8b979]" aria-hidden="true">
+            <svg viewBox="0 0 240 24" class="w-full h-5" fill="none">
+              <line x1="12" y1="12" x2="96" y2="12" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.9" />
+              <line x1="144" y1="12" x2="228" y2="12" stroke="currentColor" stroke-opacity="0.55" stroke-width="0.9" />
+              <path d="M104 12C108 8 112 8 115 12C112 16 108 16 104 12Z" fill="currentColor" fill-opacity="0.85" />
+              <rect x="117.5" y="9.5" width="5" height="5" transform="rotate(45 120 12)" fill="#e09f56" />
+              <path d="M136 12C132 8 128 8 125 12C128 16 132 16 136 12Z" fill="currentColor" fill-opacity="0.85" />
+            </svg>
           </div>
 
-          <!-- Bloque destacado de invitado (editable y sincronizado) -->
-          <div class="w-full rounded-lg py-4 px-5 mb-5 border border-[#c9a86a]/45 bg-white/[0.04]">
+          <!-- Saludo y Nombre Heroico del Invitado(a) -->
+          <div class="w-full max-w-[430px] py-2 px-3 mb-3 relative">
             <div
-              id="field-guest-label"
+              id="field-salutation"
               contenteditable="true"
-              class="text-[10.5px] font-bold tracking-[0.24em] uppercase text-[#c9a86a] mb-1.5"
+              class="font-editorial italic text-[18px] text-[#f2dfb3]/90 mb-0.5"
             >
-              INVITADO ESPECIAL
+              Estimado/a
             </div>
             <div
               id="field-guest-name"
               contenteditable="true"
-              class="font-serif-inst text-[25px] leading-snug font-bold text-white"
+              class="guest-hero-name"
             >
-              [Nombre y Apellido del Invitado]
+              Invitado Especial
             </div>
+            <div class="h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-[#d8b979]/75 to-transparent mt-2"></div>
           </div>
 
-          <!-- Mensaje ejecutivo cálido -->
+          <!-- Texto de Hospitalidad de Gala -->
           <p
-            id="field-message"
+            id="field-hospitality-copy"
             contenteditable="true"
-            class="text-[14.5px] leading-[1.65] text-slate-200/95 font-normal max-w-[420px]"
+            class="font-editorial italic text-[19.5px] leading-[1.42] text-[#fbf6ec]/95 font-normal max-w-[426px]"
           >
-            En esta fecha especial de gratitud, tenemos el honor de invitarle a compartir un encuentro fraterno para celebrar el camino recorrido y renovar nuestro compromiso institucional.
+            Una velada especial para compartir gratitud, fraternidad y celebrar los logros alcanzados juntos en esta temporada.
           </p>
         </section>
 
-        <!-- 3. RECUADRO ESTRUCTURADO DE DATOS DEL EVENTO (BORRADOR EDITABLE) -->
-        <section class="relative z-10 w-full rounded-lg border border-[#c9a86a]/45 bg-[#05080f]/65 px-5 py-4 mb-4">
-          <div class="grid grid-cols-1 divide-y divide-[#c9a86a]/20 text-left">
-            <!-- FECHA -->
-            <div class="py-2 flex items-baseline justify-between gap-3">
-              <span class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-[#d49b54] shrink-0">FECHA</span>
-              <span id="field-date" contenteditable="true" class="text-[13.5px] font-semibold text-white text-right">
-                Jueves, 26 de noviembre de 2026
+        <!-- ==================================================================
+             3. COMPOSICIÓN SIMÉTRICA DE FECHA, HORA, SEDE, DIRECCIÓN Y ETIQUETA
+             ================================================================== -->
+        <section class="relative z-10 w-full max-w-[436px] mx-auto my-1.5">
+          <!-- Tres columnas clásicas entre filetes dorados -->
+          <div class="grid grid-cols-3 items-center py-2.5 border-y border-[#d8b979]/55 text-center">
+            <!-- Columna Izquierda: Día -->
+            <div class="px-1">
+              <span
+                id="field-day-name"
+                contenteditable="true"
+                class="font-micro text-[11px] font-semibold tracking-[0.24em] uppercase text-[#f2dfb3]"
+              >
+                JUEVES
               </span>
             </div>
 
-            <!-- HORA -->
-            <div class="py-2 flex items-baseline justify-between gap-3">
-              <span class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-[#d49b54] shrink-0">HORA</span>
-              <span id="field-time" contenteditable="true" class="text-[13.5px] font-semibold text-[#e6cfa3] text-right">
-                Por confirmar (Ej. 19h00)
+            <!-- Columna Central: Numeral Heroico -->
+            <div class="px-2 border-x border-[#d8b979]/35 flex flex-col items-center justify-center">
+              <span
+                id="field-day-num"
+                contenteditable="true"
+                class="date-hero-numeral"
+              >
+                26
+              </span>
+              <span
+                id="field-month-year"
+                contenteditable="true"
+                class="font-micro text-[9px] font-semibold tracking-[0.22em] uppercase text-[#d8b979] mt-1"
+              >
+                NOVIEMBRE · 2026
               </span>
             </div>
 
-            <!-- LUGAR -->
-            <div class="py-2 flex items-baseline justify-between gap-3">
-              <span class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-[#d49b54] shrink-0">LUGAR</span>
-              <span id="field-place" contenteditable="true" class="text-[13.5px] font-semibold text-white text-right">
-                Recepción privada · Casa CIMAJ
-              </span>
-            </div>
-
-            <!-- DETALLE -->
-            <div class="pt-2 pb-0.5 flex items-baseline justify-between gap-3">
-              <span class="text-[10.5px] font-bold tracking-[0.18em] uppercase text-[#d49b54] shrink-0">DETALLE</span>
-              <span id="field-detail" contenteditable="true" class="text-[13px] font-medium text-slate-200 text-right">
-                Confirmar asistencia · Tenida semiformal
+            <!-- Columna Derecha: Hora -->
+            <div class="px-1">
+              <span
+                id="field-time"
+                contenteditable="true"
+                class="font-micro text-[12px] font-semibold tracking-[0.2em] uppercase text-[#f2dfb3]"
+              >
+                19h30
               </span>
             </div>
           </div>
+
+          <!-- Sede, Dirección Dedicada y Código de Vestimenta -->
+          <div class="text-center mt-3 space-y-2">
+            <p
+              id="field-venue"
+              contenteditable="true"
+              class="font-editorial italic text-[19.5px] font-semibold text-[#fbf6ec] leading-snug"
+            >
+              Recepción Privada · Casa CIMAJ
+            </p>
+
+            <!-- Bloque Dedicado de DIRECCIÓN con Ornamento de Ubicación -->
+            <div class="py-2 px-3.5 rounded-md border border-[#d4af6a]/40 bg-[#050404]/55">
+              <div class="inline-flex items-center justify-center gap-1.5 mb-0.5">
+                <svg class="w-3 h-3 text-[#d4af6a]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+                </svg>
+                <span class="font-micro text-[9.5px] font-bold tracking-[0.26em] uppercase text-[#d4af6a]">
+                  DIRECCIÓN
+                </span>
+              </div>
+              <p
+                id="field-address"
+                contenteditable="true"
+                class="font-editorial text-[18px] font-semibold text-[#fbf6ec] leading-snug"
+              >
+                Por confirmar · Quito, Ecuador
+              </p>
+            </div>
+
+            <p
+              id="field-dresscode"
+              contenteditable="true"
+              class="font-editorial italic text-[16.5px] text-[#e5d8c3]/90 leading-snug"
+            >
+              Traje Formal / Cóctel Ejecutivo
+            </p>
+          </div>
         </section>
 
-        <!-- 4. PIE INSTITUCIONAL EN LA BASE DE LA TARJETA -->
-        <footer class="relative z-10 text-center pt-2 border-t border-[#c9a86a]/30">
+        <!-- ==================================================================
+             4. CIERRE DE CONFIRMACIÓN Y SITIO WEB OFICIAL (SIN CORREOS)
+             ================================================================== -->
+        <footer class="relative z-10 text-center pt-1.5">
           <p
-            id="field-footer-corp"
+            id="field-rsvp"
             contenteditable="true"
-            class="text-[10.5px] leading-relaxed text-slate-300/90 font-medium"
+            class="font-editorial italic text-[15.5px] text-[#e5d8c3]/90 mb-1"
           >
-            CIMAJ — Corporación de Indagación, Mediación, Asesoría Jurídica y Financiera
+            Agradecemos confirmar su grata asistencia
           </p>
-          <p
-            id="field-footer-web"
+          <a
+            id="field-website"
+            href="https://www.cimaj.gt.tc"
+            target="_blank"
+            rel="noopener noreferrer"
             contenteditable="true"
-            class="text-[14px] font-bold tracking-[0.08em] text-[#c9a86a] mt-1"
+            class="inline-block font-micro text-[12px] font-semibold tracking-[0.24em] uppercase text-[#e6c98a] hover:text-[#f2dfb3] transition-colors no-underline"
           >
             www.cimaj.gt.tc
-          </p>
+          </a>
         </footer>
       </article>
     </div>
 
-    <!-- Nota discreta de ayuda (no imprimible) -->
-    <p class="no-print text-xs text-slate-400 mt-4 text-center max-w-md">
-      Haz clic sobre cualquier texto dentro de la tarjeta para editarlo directamente o escribe el nombre arriba para generar y descargar cada invitación en PNG (1080×1920 px).
+    <p class="no-print text-[11.5px] text-[#e5d8c3]/65 mt-4 text-center max-w-md">
+      Haz clic sobre cualquier texto de la tarjeta o usa los campos superiores para fijar la hora y dirección antes de descargar.
     </p>
   </main>
 
-  <!-- Toast de notificación -->
-  <div id="toast-msg" class="toast-msg no-print" role="status" aria-live="polite">
-    <span class="w-2 h-2 rounded-full bg-[#d49b54] shrink-0"></span>
+  <!-- ========================================================================
+       PANEL DESLIZABLE: LISTADO DE INVITADOS Y DESCARGA POR LOTE
+       ======================================================================== -->
+  <div id="drawer-backdrop" class="drawer-backdrop no-print"></div>
+  <aside id="guest-drawer" class="guest-drawer no-print" aria-label="Listado de Invitados">
+    <div class="px-5 py-4 border-b border-[#d8b979]/25 flex items-center justify-between">
+      <div>
+        <h2 class="font-editorial text-xl font-bold text-[#f2dfb3]">Listado de Invitados</h2>
+        <p class="text-[11px] text-[#e5d8c3]/70">Pega un nombre por línea para generar invitaciones</p>
+      </div>
+      <button type="button" id="btn-close-drawer" class="tool-btn !p-2" aria-label="Cerrar panel">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-5 flex-1 flex flex-col gap-4 overflow-y-auto">
+      <div>
+        <label for="bulk-guests-textarea" class="block text-[11px] font-semibold uppercase tracking-wider text-[#d8b979] mb-1.5">
+          Nombres de los invitados (uno por línea)
+        </label>
+        <textarea
+          id="bulk-guests-textarea"
+          rows="7"
+          class="w-full rounded-lg bg-white/[0.05] border border-[#d8b979]/35 p-3 text-xs text-[#fbf6ec] placeholder-[#e5d8c3]/40 outline-none focus:border-[#d8b979]"
+          placeholder="Dr. Carlos Mendoza&#10;Ing. Valeria Paredes&#10;Abg. Sebastián Andrade&#10;Familia Torres Salazar"
+        ></textarea>
+        <div class="mt-2 flex items-center gap-2">
+          <button type="button" id="btn-parse-guests" class="tool-btn flex-1">
+            Cargar Lista
+          </button>
+          <button type="button" id="btn-batch-download" class="tool-btn tool-btn-gold flex-1">
+            Descargar Todas (PNG)
+          </button>
+        </div>
+      </div>
+
+      <div class="border-t border-[#d8b979]/20 pt-3 flex-1 flex flex-col">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] font-semibold uppercase tracking-wider text-[#e5d8c3]/75">Invitados cargados</span>
+          <span id="guest-count-badge" class="text-[11px] font-bold text-[#d8b979]">0</span>
+        </div>
+        <ul id="guest-chips-list" class="space-y-1.5 overflow-y-auto pr-1">
+          <li class="text-xs text-[#e5d8c3]/50 italic py-4 text-center">
+            Aún no has cargado nombres. Pega el listado arriba y pulsa "Cargar Lista".
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast de Notificación -->
+  <div id="toast-pill" class="toast-pill no-print" role="status" aria-live="polite">
+    <span class="w-2 h-2 rounded-full bg-[#d8b979] shrink-0"></span>
     <span id="toast-text">Listo</span>
   </div>
 
   <!-- ========================================================================
-       LÓGICA JAVASCRIPT (SINCRONIZACIÓN, LOGO, RESTAURACIÓN Y EXPORTACIÓN)
+       LÓGICA JAVASCRIPT (SINCRONIZACIÓN, AMBIENTES, LISTADO Y COMPOSITOR 1080x1920)
        ======================================================================== -->
   <script>
     (function () {
       'use strict';
 
-      const logoFileInput = document.getElementById('logo-file-input');
-      const logoHeaderBox = document.getElementById('logo-header-box');
-      const cimajLogoImg = document.getElementById('cimaj-logo-img');
-      const quickGuestInput = document.getElementById('quick-guest-input');
-      const fieldGuestName = document.getElementById('field-guest-name');
-      const btnDownloadPng = document.getElementById('btn-download-png');
-      const btnPrintPdf = document.getElementById('btn-print-pdf');
-      const btnResetText = document.getElementById('btn-reset-text');
+      const GITHUB_RAW_LOGO = 'https://raw.githubusercontent.com/direccioncomercial/cimajinvitaci-n/main/png_01.png';
+      const LOCAL_FALLBACK_LOGO = './png_01.png';
+      const PHOTO_PRIMARY = 'https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=85';
+      const PHOTO_SECONDARY = 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1080&q=85';
+      const DEFAULT_GUEST_TEXT = 'Invitado Especial';
+      const DEFAULT_ADDRESS_TEXT = 'Por confirmar · Quito, Ecuador';
+      const DEFAULT_TIME_TEXT = '19h30';
+
+      // Elementos principales
       const invitationCard = document.getElementById('invitation-card');
       const cardScaler = document.getElementById('card-scaler');
-      const toastMsg = document.getElementById('toast-msg');
+      const crestZone = document.getElementById('crest-zone');
+      const cimajCrestImg = document.getElementById('cimaj-crest-img');
+      const bgDinnerPhoto = document.getElementById('bg-dinner-photo');
+
+      const quickGuestInput = document.getElementById('quick-guest-input');
+      const fieldGuestName = document.getElementById('field-guest-name');
+      const quickTimeInput = document.getElementById('quick-time-input');
+      const fieldTime = document.getElementById('field-time');
+      const quickAddressInput = document.getElementById('quick-address-input');
+      const fieldAddress = document.getElementById('field-address');
+      const ambianceSelector = document.getElementById('ambiance-selector');
+
+      const btnDownloadPng = document.getElementById('btn-download-png');
+      const btnPrintPdf = document.getElementById('btn-print-pdf');
+
+      // Drawer de listado
+      const btnOpenDrawer = document.getElementById('btn-open-drawer');
+      const btnCloseDrawer = document.getElementById('btn-close-drawer');
+      const drawerBackdrop = document.getElementById('drawer-backdrop');
+      const guestDrawer = document.getElementById('guest-drawer');
+      const bulkGuestsTextarea = document.getElementById('bulk-guests-textarea');
+      const btnParseGuests = document.getElementById('btn-parse-guests');
+      const btnBatchDownload = document.getElementById('btn-batch-download');
+      const guestChipsList = document.getElementById('guest-chips-list');
+      const guestCountBadge = document.getElementById('guest-count-badge');
+
+      const toastPill = document.getElementById('toast-pill');
       const toastText = document.getElementById('toast-text');
       let toastTimer = null;
+      let loadedGuests = [];
 
-      // Valores iniciales para restaurar el borrador base en cualquier momento
-      const DEFAULT_TEXTS = {
-        'field-kicker': 'ENCUENTRO DE GRATITUD · EDICIÓN 2026',
-        'field-main-title': 'Acción de Gracias',
-        'field-subtitle': 'Thanksgiving Institucional',
-        'field-guest-label': 'INVITADO ESPECIAL',
-        'field-guest-name': '[Nombre y Apellido del Invitado]',
-        'field-message': 'En esta fecha especial de gratitud, tenemos el honor de invitarle a compartir un encuentro fraterno para celebrar el camino recorrido y renovar nuestro compromiso institucional.',
-        'field-date': 'Jueves, 26 de noviembre de 2026',
-        'field-time': 'Por confirmar (Ej. 19h00)',
-        'field-place': 'Recepción privada · Casa CIMAJ',
-        'field-detail': 'Confirmar asistencia · Tenida semiformal',
-        'field-footer-corp': 'CIMAJ — Corporación de Indagación, Mediación, Asesoría Jurídica y Financiera',
-        'field-footer-web': 'www.cimaj.gt.tc'
-      };
-
-      function showToast(message, duration = 3200) {
-        if (!toastMsg || !toastText) return;
-        toastText.textContent = message;
-        toastMsg.classList.add('show');
+      function showToast(msg, duration = 3200) {
+        if (!toastPill || !toastText) return;
+        toastText.textContent = msg;
+        toastPill.classList.add('show');
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
-          toastMsg.classList.remove('show');
+          toastPill.classList.remove('show');
         }, duration);
       }
 
       /**
-       * 1. Carga del logotipo oficial de CIMAJ (fondo negro -> mix-blend-mode: screen)
+       * 1. Respaldo automático del logotipo oficial CIMAJ:
+       *    GitHub RAW -> ./png_01.png -> Emblema tipográfico
        */
-      if (logoFileInput) {
-        logoFileInput.addEventListener('change', function (e) {
-          const file = e.target.files && e.target.files[0];
-          if (!file) return;
-
-          const reader = new FileReader();
-          reader.onload = function (event) {
-            cimajLogoImg.src = event.target.result;
-            logoHeaderBox.classList.add('has-logo');
-            showToast('Logotipo oficial de CIMAJ aplicado correctamente.');
-          };
-          reader.onerror = function () {
-            showToast('No se pudo cargar la imagen del logotipo.');
-          };
-          reader.readAsDataURL(file);
+      if (cimajCrestImg && crestZone) {
+        let triedLocal = false;
+        cimajCrestImg.addEventListener('error', function () {
+          if (!triedLocal) {
+            triedLocal = true;
+            cimajCrestImg.removeAttribute('crossorigin');
+            cimajCrestImg.src = LOCAL_FALLBACK_LOGO;
+          } else {
+            crestZone.classList.add('crest-fallback');
+          }
+        });
+        cimajCrestImg.addEventListener('load', function () {
+          crestZone.classList.remove('crest-fallback');
         });
       }
 
       /**
-       * 2. Sincronización bidireccional en tiempo real entre el input superior
-       *    y el campo editable "Nombre del Invitado" dentro de la tarjeta.
+       * 2. Respaldo en cascada de la fotografía de cena de Acción de Gracias:
+       *    Unsplash Principal -> Unsplash Secundaria -> Ilustración SVG de velas y cosecha
        */
-      if (quickGuestInput && fieldGuestName) {
-        quickGuestInput.addEventListener('input', function () {
-          const val = quickGuestInput.value.trim();
-          fieldGuestName.textContent = val.length > 0 ? quickGuestInput.value : DEFAULT_TEXTS['field-guest-name'];
-        });
-
-        fieldGuestName.addEventListener('input', function () {
-          const current = fieldGuestName.textContent.trim();
-          if (current === DEFAULT_TEXTS['field-guest-name']) {
-            quickGuestInput.value = '';
+      if (bgDinnerPhoto) {
+        let triedSecondaryPhoto = false;
+        bgDinnerPhoto.addEventListener('error', function () {
+          if (!triedSecondaryPhoto) {
+            triedSecondaryPhoto = true;
+            bgDinnerPhoto.src = PHOTO_SECONDARY;
           } else {
-            quickGuestInput.value = fieldGuestName.textContent;
+            bgDinnerPhoto.style.display = 'none';
           }
         });
       }
 
       /**
-       * 3. Restaurar textos al borrador base
+       * 3. Cambio de ambiente de cena en tiempo real
        */
-      if (btnResetText) {
-        btnResetText.addEventListener('click', function () {
-          Object.keys(DEFAULT_TEXTS).forEach((id) => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = DEFAULT_TEXTS[id];
-          });
-          if (quickGuestInput) quickGuestInput.value = '';
-          showToast('Textos restaurados al borrador base.');
+      if (ambianceSelector && invitationCard) {
+        ambianceSelector.addEventListener('change', function () {
+          invitationCard.setAttribute('data-ambiance', ambianceSelector.value);
         });
       }
 
       /**
-       * 4. Escalado responsivo en pantallas móviles estrechas (< 572px)
-       *    sin afectar el tamaño real de exportación 540x960 (2x = 1080x1920).
+       * 4. Sincronización bidireccional de Invitado, Hora y Dirección
+       */
+      function setGuestName(name) {
+        const clean = (name || '').trim();
+        fieldGuestName.textContent = clean.length > 0 ? name : DEFAULT_GUEST_TEXT;
+        quickGuestInput.value = clean === DEFAULT_GUEST_TEXT ? '' : name;
+      }
+
+      if (quickGuestInput && fieldGuestName) {
+        quickGuestInput.addEventListener('input', function () {
+          const val = quickGuestInput.value.trim();
+          fieldGuestName.textContent = val.length > 0 ? quickGuestInput.value : DEFAULT_GUEST_TEXT;
+        });
+
+        fieldGuestName.addEventListener('input', function () {
+          const current = fieldGuestName.textContent.trim();
+          quickGuestInput.value = current === DEFAULT_GUEST_TEXT ? '' : fieldGuestName.textContent;
+        });
+      }
+
+      if (quickTimeInput && fieldTime) {
+        quickTimeInput.addEventListener('input', function () {
+          const val = quickTimeInput.value.trim();
+          fieldTime.textContent = val.length > 0 ? quickTimeInput.value : DEFAULT_TIME_TEXT;
+        });
+
+        fieldTime.addEventListener('input', function () {
+          quickTimeInput.value = fieldTime.textContent.trim();
+        });
+      }
+
+      if (quickAddressInput && fieldAddress) {
+        quickAddressInput.addEventListener('input', function () {
+          const val = quickAddressInput.value.trim();
+          fieldAddress.textContent = val.length > 0 ? quickAddressInput.value : DEFAULT_ADDRESS_TEXT;
+        });
+
+        fieldAddress.addEventListener('input', function () {
+          const current = fieldAddress.textContent.trim();
+          quickAddressInput.value = current === DEFAULT_ADDRESS_TEXT ? '' : fieldAddress.textContent;
+        });
+      }
+
+      /**
+       * 5. Escalado responsivo en pantallas estrechas manteniendo 540x960 base
        */
       function updateResponsiveScale() {
         const baseW = 540;
@@ -717,87 +1142,530 @@
       updateResponsiveScale();
 
       /**
-       * 5. Exportación a PNG en alta resolución exacta (1080 x 1920 px)
-       *    con html2canvas y descarga automática nombrada con el invitado.
+       * 6. Panel lateral de Listado de Invitados
        */
-      function buildCleanFilename() {
-        const rawGuest = (fieldGuestName.textContent || '').trim();
-        if (!rawGuest || rawGuest === DEFAULT_TEXTS['field-guest-name']) {
-          return 'Invitacion_Thanksgiving_CIMAJ_Invitado.png';
+      function toggleDrawer(open) {
+        if (open) {
+          drawerBackdrop.classList.add('open');
+          guestDrawer.classList.add('open');
+        } else {
+          drawerBackdrop.classList.remove('open');
+          guestDrawer.classList.remove('open');
         }
-        const sanitized = rawGuest
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .replace(/[^a-zA-Z0-9\s_-]/g, '')
-          .trim()
-          .replace(/\s+/g, '_');
-        return `Invitacion_Thanksgiving_CIMAJ_${sanitized || 'Invitado'}.png`;
       }
 
-      if (btnDownloadPng) {
-        btnDownloadPng.addEventListener('click', async function () {
-          if (typeof html2canvas === 'undefined') {
-            showToast('La librería de captura aún se está cargando. Intenta nuevamente en un segundo.');
-            return;
-          }
+      if (btnOpenDrawer) btnOpenDrawer.addEventListener('click', () => toggleDrawer(true));
+      if (btnCloseDrawer) btnCloseDrawer.addEventListener('click', () => toggleDrawer(false));
+      if (drawerBackdrop) drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
 
-          if (document.activeElement && typeof document.activeElement.blur === 'function') {
-            document.activeElement.blur();
-          }
+      function renderGuestList() {
+        guestCountBadge.textContent = String(loadedGuests.length);
+        if (loadedGuests.length === 0) {
+          guestChipsList.innerHTML = `
+            <li class="text-xs text-[#e5d8c3]/50 italic py-4 text-center">
+              Aún no has cargado nombres. Pega el listado arriba y pulsa "Cargar Lista".
+            </li>`;
+          return;
+        }
 
-          const originalBtnHtml = btnDownloadPng.innerHTML;
-          btnDownloadPng.disabled = true;
-          btnDownloadPng.innerHTML = '<span>Generando PNG 1080×1920...</span>';
+        guestChipsList.innerHTML = '';
+        loadedGuests.forEach((guest, index) => {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-white/[0.04] border border-[#d8b979]/20 hover:border-[#d8b979]/60 transition-colors';
 
-          // Guardar escala actual de pantalla y normalizar a 1:1 para captura exacta 540x960 * 2 = 1080x1920
-          const prevTransform = invitationCard.style.transform;
-          invitationCard.style.transform = 'none';
-          invitationCard.classList.add('capturing');
+          const nameBtn = document.createElement('button');
+          nameBtn.type = 'button';
+          nameBtn.className = 'text-left text-xs font-medium text-[#fbf6ec] truncate flex-1 hover:text-[#f2dfb3]';
+          nameBtn.textContent = `${index + 1}. ${guest}`;
+          nameBtn.title = 'Clic para previsualizar esta invitación';
+          nameBtn.addEventListener('click', () => {
+            setGuestName(guest);
+            showToast(`Vista previa: ${guest}`);
+          });
 
-          try {
-            // Esperar un frame de renderizado limpio
-            await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          const dlBtn = document.createElement('button');
+          dlBtn.type = 'button';
+          dlBtn.className = 'text-[10.5px] font-semibold px-2.5 py-1 rounded bg-[#d8b979]/15 text-[#f2dfb3] border border-[#d8b979]/35 hover:bg-[#d8b979] hover:text-[#090605] transition-colors shrink-0';
+          dlBtn.textContent = 'PNG';
+          dlBtn.title = 'Descargar invitación PNG de este invitado';
+          dlBtn.addEventListener('click', async () => {
+            setGuestName(guest);
+            await exportInvitationPng();
+          });
 
-            const canvas = await html2canvas(invitationCard, {
-              scale: 2,
-              width: 540,
-              height: 960,
-              useCORS: true,
-              allowTaint: true,
-              backgroundColor: '#05080f',
-              logging: false
-            });
+          li.appendChild(nameBtn);
+          li.appendChild(dlBtn);
+          guestChipsList.appendChild(li);
+        });
+      }
 
-            const dataUrl = canvas.toDataURL('image/png', 1.0);
-            const downloadLink = document.createElement('a');
-            downloadLink.href = dataUrl;
-            downloadLink.download = buildCleanFilename();
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-
-            showToast(`Descargado: ${downloadLink.download}`);
-          } catch (err) {
-            console.error('Error al generar PNG:', err);
-            showToast('Ocurrió un inconveniente al generar el PNG. Puedes usar "Imprimir / PDF" como alternativa.');
-          } finally {
-            invitationCard.classList.remove('capturing');
-            invitationCard.style.transform = prevTransform;
-            btnDownloadPng.disabled = false;
-            btnDownloadPng.innerHTML = originalBtnHtml;
+      if (btnParseGuests) {
+        btnParseGuests.addEventListener('click', () => {
+          const lines = (bulkGuestsTextarea.value || '')
+            .split(/\r?\n/)
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0);
+          loadedGuests = lines;
+          renderGuestList();
+          if (loadedGuests.length > 0) {
+            setGuestName(loadedGuests[0]);
+            showToast(`${loadedGuests.length} invitado(s) cargados en la lista.`);
+          } else {
+            showToast('Escribe al menos un nombre en el cuadro de texto.');
           }
         });
       }
 
       /**
-       * 6. Exportación directa a PDF / Impresión sin márgenes (108mm x 192mm)
+       * 7. Compositor Nativo HTML5 Canvas (1080 x 1920 px exactos)
+       *    Garantiza descarga PNG en alta resolución sin bordes negros en el logo
+       *    y con todos los textos editados incluyendo la Dirección.
+       */
+      function buildExportFilename() {
+        const rawGuest = (fieldGuestName.textContent || '').trim();
+        if (!rawGuest || rawGuest === DEFAULT_GUEST_TEXT) {
+          return 'Invitacion_Thanksgiving_CIMAJ_Invitado.png';
+        }
+        const safeName = rawGuest
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-zA-Z0-9\s_-]/g, '')
+          .trim()
+          .replace(/\s+/g, '_');
+        return `Invitacion_Thanksgiving_CIMAJ_${safeName || 'Invitado'}.png`;
+      }
+
+      function loadCorsImage(src) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve(img);
+          img.onerror = () => resolve(null);
+          img.src = src;
+        });
+      }
+
+      function drawWrappedCenteredText(ctx, text, x, startY, maxWidth, lineHeight) {
+        const words = (text || '').trim().split(/\s+/);
+        let line = '';
+        let y = startY;
+        const lines = [];
+
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line ? `${line} ${words[i]}` : words[i];
+          if (ctx.measureText(testLine).width > maxWidth && line) {
+            lines.push(line);
+            line = words[i];
+          } else {
+            line = testLine;
+          }
+        }
+        if (line) lines.push(line);
+
+        lines.forEach((ln) => {
+          ctx.fillText(ln, x, y);
+          y += lineHeight;
+        });
+        return y;
+      }
+
+      function drawTrackedCenteredText(ctx, text, centerX, y, tracking) {
+        const chars = Array.from(text || '');
+        if (chars.length === 0) return;
+        let totalWidth = 0;
+        chars.forEach((ch, idx) => {
+          totalWidth += ctx.measureText(ch).width + (idx < chars.length - 1 ? tracking : 0);
+        });
+        let cursorX = centerX - totalWidth / 2;
+        ctx.textAlign = 'left';
+        chars.forEach((ch, idx) => {
+          ctx.fillText(ch, cursorX, y);
+          cursorX += ctx.measureText(ch).width + (idx < chars.length - 1 ? tracking : 0);
+        });
+        ctx.textAlign = 'center';
+      }
+
+      async function exportInvitationPng() {
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+          document.activeElement.blur();
+        }
+
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+
+        const W = 1080;
+        const H = 1920;
+        const canvas = document.createElement('canvas');
+        canvas.width = W;
+        canvas.height = H;
+        const ctx = canvas.getContext('2d');
+        const ambiance = invitationCard.getAttribute('data-ambiance') || 'candles';
+
+        // 1. Fondo base profundo
+        const baseGrad = ctx.createRadialGradient(W * 0.5, H * 0.46, 40, W * 0.5, H * 0.5, H * 0.68);
+        if (ambiance === 'harvest') {
+          baseGrad.addColorStop(0, '#4f2511');
+          baseGrad.addColorStop(0.55, '#221009');
+          baseGrad.addColorStop(1, '#070403');
+        } else if (ambiance === 'intimate') {
+          baseGrad.addColorStop(0, '#361115');
+          baseGrad.addColorStop(0.55, '#19080a');
+          baseGrad.addColorStop(1, '#040203');
+        } else {
+          baseGrad.addColorStop(0, '#471e10');
+          baseGrad.addColorStop(0.55, '#1d0d09');
+          baseGrad.addColorStop(1, '#050404');
+        }
+        ctx.fillStyle = baseGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        // 2. Fotografía de cena de Acción de Gracias (cover)
+        let photoImg = await loadCorsImage(PHOTO_PRIMARY);
+        if (!photoImg) photoImg = await loadCorsImage(PHOTO_SECONDARY);
+        if (photoImg) {
+          ctx.save();
+          ctx.globalAlpha = ambiance === 'intimate' ? 0.34 : ambiance === 'harvest' ? 0.46 : 0.42;
+          const imgRatio = photoImg.width / photoImg.height;
+          const canvasRatio = W / H;
+          let drawW = W;
+          let drawH = H;
+          let offsetX = 0;
+          let offsetY = 0;
+          if (imgRatio > canvasRatio) {
+            drawW = H * imgRatio;
+            offsetX = (W - drawW) / 2;
+          } else {
+            drawH = W / imgRatio;
+            offsetY = (H - drawH) / 2;
+          }
+          ctx.drawImage(photoImg, offsetX, offsetY, drawW, drawH);
+          ctx.restore();
+        }
+
+        // 3. Viñeta obsidiana superior (#000000) y resplandor cálido de velas
+        const topVeil = ctx.createLinearGradient(0, 0, 0, 620);
+        topVeil.addColorStop(0, 'rgba(0, 0, 0, 1)');
+        topVeil.addColorStop(0.36, 'rgba(0, 0, 0, 0.96)');
+        topVeil.addColorStop(0.72, 'rgba(8, 4, 4, 0.65)');
+        topVeil.addColorStop(1, 'rgba(8, 4, 4, 0)');
+        ctx.fillStyle = topVeil;
+        ctx.fillRect(0, 0, W, 620);
+
+        const bottomVeil = ctx.createLinearGradient(0, H * 0.45, 0, H);
+        bottomVeil.addColorStop(0, 'rgba(7, 4, 3, 0.25)');
+        bottomVeil.addColorStop(0.55, 'rgba(9, 5, 4, 0.78)');
+        bottomVeil.addColorStop(1, 'rgba(5, 3, 3, 0.96)');
+        ctx.fillStyle = bottomVeil;
+        ctx.fillRect(0, H * 0.45, W, H * 0.55);
+
+        const candleHalo = ctx.createRadialGradient(W * 0.5, H * 0.44, 20, W * 0.5, H * 0.44, 520);
+        candleHalo.addColorStop(0, 'rgba(224, 159, 86, 0.16)');
+        candleHalo.addColorStop(1, 'rgba(224, 159, 86, 0)');
+        ctx.fillStyle = candleHalo;
+        ctx.fillRect(0, 0, W, H);
+
+        // 4. Doble marco de papelería en oro champán (#d4af6a) y esquineros
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.62)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(32, 32, W - 64, H - 64);
+
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.28)';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(44, 44, W - 88, H - 88);
+
+        // Esquineros ornamentales
+        const corners = [
+          [32, 32, 1, 1],
+          [W - 32, 32, -1, 1],
+          [32, H - 32, 1, -1],
+          [W - 32, H - 32, -1, -1]
+        ];
+        ctx.strokeStyle = '#d4af6a';
+        ctx.lineWidth = 3;
+        corners.forEach(([cx, cy, sx, sy]) => {
+          ctx.beginPath();
+          ctx.moveTo(cx, cy + 56 * sy);
+          ctx.lineTo(cx, cy);
+          ctx.lineTo(cx + 56 * sx, cy);
+          ctx.stroke();
+
+          ctx.fillStyle = '#d4af6a';
+          ctx.beginPath();
+          ctx.arc(cx + 14 * sx, cy + 14 * sy, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // 5. Logotipo Oficial de CIMAJ (eliminando fondo negro por luminancia para fusión impecable)
+        let logoImg = await loadCorsImage(GITHUB_RAW_LOGO);
+        if (!logoImg) logoImg = await loadCorsImage(LOCAL_FALLBACK_LOGO);
+
+        if (logoImg) {
+          const maxLogoW = 540;
+          const maxLogoH = 215;
+          const ratio = Math.min(maxLogoW / logoImg.width, maxLogoH / logoImg.height);
+          const lw = Math.round(logoImg.width * ratio);
+          const lh = Math.round(logoImg.height * ratio);
+
+          const off = document.createElement('canvas');
+          off.width = lw;
+          off.height = lh;
+          const octx = off.getContext('2d');
+          octx.drawImage(logoImg, 0, 0, lw, lh);
+
+          try {
+            const imgData = octx.getImageData(0, 0, lw, lh);
+            const d = imgData.data;
+            for (let i = 0; i < d.length; i += 4) {
+              const lum = Math.max(d[i], d[i + 1], d[i + 2]);
+              d[i + 3] = lum < 18 ? 0 : Math.min(255, Math.round((lum / 255) * 255));
+            }
+            octx.putImageData(imgData, 0, 0);
+          } catch (_) {
+            // Si el navegador restringe getImageData, dibujar con globalCompositeOperation screen
+          }
+
+          ctx.save();
+          ctx.globalCompositeOperation = 'screen';
+          ctx.drawImage(off, (W - lw) / 2, 74, lw, lh);
+          ctx.restore();
+        } else {
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '700 66px "Cormorant Garamond", Georgia, serif';
+          drawTrackedCenteredText(ctx, 'CIMAJ', W / 2, 185, 18);
+          ctx.fillStyle = '#d4af6a';
+          ctx.font = '600 15px "Montserrat", sans-serif';
+          drawTrackedCenteredText(ctx, 'CORPORACIÓN DE INDAGACIÓN, MEDIACIÓN, ASESORÍA JURÍDICA Y FINANCIERA', W / 2, 224, 2.5);
+        }
+
+        // 6. Kicker superior y Título Caligráfico Principal
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#f2dfb3';
+        ctx.font = '600 20px "Montserrat", sans-serif';
+        const kickerText = (document.getElementById('field-opening-1').textContent || '').trim().toUpperCase();
+        drawTrackedCenteredText(ctx, kickerText, W / 2, 378, 5);
+
+        ctx.save();
+        ctx.fillStyle = '#f4dfb4';
+        ctx.shadowColor = 'rgba(224, 159, 86, 0.38)';
+        ctx.shadowBlur = 24;
+        ctx.font = '400 106px "Great Vibes", cursive';
+        const mainTitle = (document.getElementById('field-main-title').textContent || '').trim();
+        ctx.fillText(mainTitle, W / 2, 495);
+        ctx.restore();
+
+        // Divisor ornamental dorado
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.6)';
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(W / 2 - 210, 548);
+        ctx.lineTo(W / 2 - 28, 548);
+        ctx.moveTo(W / 2 + 28, 548);
+        ctx.lineTo(W / 2 + 210, 548);
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(W / 2, 548);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillStyle = '#e09f56';
+        ctx.fillRect(-6, -6, 12, 12);
+        ctx.restore();
+
+        // 7. Saludo y Nombre Heroico del Invitado
+        ctx.fillStyle = '#f2dfb3';
+        ctx.font = 'italic 500 36px "Cormorant Garamond", Georgia, serif';
+        const salutationText = (document.getElementById('field-salutation').textContent || '').trim();
+        ctx.fillText(salutationText, W / 2, 622);
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'italic 600 62px "Cormorant Garamond", Georgia, serif';
+        const guestText = (fieldGuestName.textContent || DEFAULT_GUEST_TEXT).trim();
+        const afterGuestY = drawWrappedCenteredText(ctx, guestText, W / 2, 694, 840, 70);
+
+        // Filete bajo el invitado
+        const ruleY = afterGuestY - 34;
+        const ruleGrad = ctx.createLinearGradient(W / 2 - 150, ruleY, W / 2 + 150, ruleY);
+        ruleGrad.addColorStop(0, 'rgba(212, 175, 106, 0)');
+        ruleGrad.addColorStop(0.5, 'rgba(212, 175, 106, 0.8)');
+        ruleGrad.addColorStop(1, 'rgba(212, 175, 106, 0)');
+        ctx.strokeStyle = ruleGrad;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(W / 2 - 150, ruleY);
+        ctx.lineTo(W / 2 + 150, ruleY);
+        ctx.stroke();
+
+        // 8. Texto de hospitalidad
+        ctx.fillStyle = 'rgba(251, 246, 236, 0.95)';
+        ctx.font = 'italic 400 38px "Cormorant Garamond", Georgia, serif';
+        const copyText = (document.getElementById('field-hospitality-copy').textContent || '').trim();
+        drawWrappedCenteredText(ctx, copyText, W / 2, ruleY + 66, 830, 52);
+
+        // 9. Bloque Simétrico de Fecha, Hora, Sede, Dirección y Vestimenta
+        const gridTopY = 1095;
+        const gridBottomY = 1265;
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.58)';
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        ctx.moveTo(110, gridTopY);
+        ctx.lineTo(W - 110, gridTopY);
+        ctx.moveTo(110, gridBottomY);
+        ctx.lineTo(W - 110, gridBottomY);
+        ctx.stroke();
+
+        // Separadores verticales centrales
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.35)';
+        ctx.beginPath();
+        ctx.moveTo(395, gridTopY + 18);
+        ctx.lineTo(395, gridBottomY - 18);
+        ctx.moveTo(685, gridTopY + 18);
+        ctx.lineTo(685, gridBottomY - 18);
+        ctx.stroke();
+
+        // Día izquierda
+        ctx.fillStyle = '#f2dfb3';
+        ctx.font = '600 22px "Montserrat", sans-serif';
+        const dayName = (document.getElementById('field-day-name').textContent || '').trim().toUpperCase();
+        drawTrackedCenteredText(ctx, dayName, 252, 1188, 4.5);
+
+        // Numeral central
+        ctx.fillStyle = '#f4dfb4';
+        ctx.font = '700 106px "Cormorant Garamond", Georgia, serif';
+        const dayNum = (document.getElementById('field-day-num').textContent || '').trim();
+        ctx.fillText(dayNum, W / 2, 1196);
+
+        ctx.fillStyle = '#d4af6a';
+        ctx.font = '600 18px "Montserrat", sans-serif';
+        const monthYear = (document.getElementById('field-month-year').textContent || '').trim().toUpperCase();
+        drawTrackedCenteredText(ctx, monthYear, W / 2, 1236, 3.8);
+
+        // Hora derecha
+        ctx.fillStyle = '#f2dfb3';
+        ctx.font = '600 24px "Montserrat", sans-serif';
+        const timeText = (fieldTime.textContent || DEFAULT_TIME_TEXT).trim();
+        drawTrackedCenteredText(ctx, timeText, 828, 1188, 3.5);
+
+        // Sede
+        ctx.fillStyle = '#fbf6ec';
+        ctx.font = 'italic 600 39px "Cormorant Garamond", Georgia, serif';
+        const venueText = (document.getElementById('field-venue').textContent || '').trim();
+        ctx.fillText(venueText, W / 2, 1344);
+
+        // Recuadro Dedicado de DIRECCIÓN
+        const addrBoxX = 110;
+        const addrBoxY = 1384;
+        const addrBoxW = W - 220;
+        const addrBoxH = 142;
+
+        ctx.fillStyle = 'rgba(5, 4, 4, 0.62)';
+        ctx.fillRect(addrBoxX, addrBoxY, addrBoxW, addrBoxH);
+        ctx.strokeStyle = 'rgba(212, 175, 106, 0.48)';
+        ctx.lineWidth = 1.6;
+        ctx.strokeRect(addrBoxX, addrBoxY, addrBoxW, addrBoxH);
+
+        // Pin de ubicación dorado + etiqueta DIRECCIÓN
+        ctx.fillStyle = '#d4af6a';
+        ctx.beginPath();
+        ctx.arc(W / 2 - 92, addrBoxY + 38, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(W / 2 - 99, addrBoxY + 40);
+        ctx.lineTo(W / 2 - 92, addrBoxY + 52);
+        ctx.lineTo(W / 2 - 85, addrBoxY + 40);
+        ctx.fill();
+
+        ctx.font = '700 19px "Montserrat", sans-serif';
+        drawTrackedCenteredText(ctx, 'DIRECCIÓN', W / 2 + 12, addrBoxY + 45, 5);
+
+        ctx.fillStyle = '#fbf6ec';
+        ctx.font = '600 35px "Cormorant Garamond", Georgia, serif';
+        const addressText = (fieldAddress.textContent || DEFAULT_ADDRESS_TEXT).trim();
+        drawWrappedCenteredText(ctx, addressText, W / 2, addrBoxY + 98, addrBoxW - 60, 42);
+
+        // Código de vestimenta
+        ctx.fillStyle = 'rgba(229, 216, 195, 0.92)';
+        ctx.font = 'italic 400 33px "Cormorant Garamond", Georgia, serif';
+        const dressText = (document.getElementById('field-dresscode').textContent || '').trim();
+        ctx.fillText(dressText, W / 2, 1592);
+
+        // 10. Cierre y sitio web oficial
+        ctx.fillStyle = 'rgba(229, 216, 195, 0.9)';
+        ctx.font = 'italic 400 31px "Cormorant Garamond", Georgia, serif';
+        const rsvpText = (document.getElementById('field-rsvp').textContent || '').trim();
+        ctx.fillText(rsvpText, W / 2, 1748);
+
+        ctx.fillStyle = '#e6c98a';
+        ctx.font = '600 24px "Montserrat", sans-serif';
+        const webText = (document.getElementById('field-website').textContent || 'www.cimaj.gt.tc').trim().toUpperCase();
+        drawTrackedCenteredText(ctx, webText, W / 2, 1805, 5.5);
+
+        // Descargar archivo PNG
+        const dataUrl = canvas.toDataURL('image/png', 1.0);
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = buildExportFilename();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showToast(`Descargada: ${link.download}`);
+      }
+
+      if (btnDownloadPng) {
+        btnDownloadPng.addEventListener('click', async function () {
+          const origHtml = btnDownloadPng.innerHTML;
+          btnDownloadPng.disabled = true;
+          btnDownloadPng.innerHTML = '<span>Generando 1080×1920...</span>';
+          try {
+            await exportInvitationPng();
+          } finally {
+            btnDownloadPng.disabled = false;
+            btnDownloadPng.innerHTML = origHtml;
+          }
+        });
+      }
+
+      if (btnBatchDownload) {
+        btnBatchDownload.addEventListener('click', async function () {
+          if (loadedGuests.length === 0) {
+            const lines = (bulkGuestsTextarea.value || '')
+              .split(/\r?\n/)
+              .map((line) => line.trim())
+              .filter((line) => line.length > 0);
+            if (lines.length === 0) {
+              showToast('Pega primero el listado de invitados para descargar en lote.');
+              return;
+            }
+            loadedGuests = lines;
+            renderGuestList();
+          }
+
+          const origHtml = btnBatchDownload.innerHTML;
+          btnBatchDownload.disabled = true;
+
+          for (let i = 0; i < loadedGuests.length; i++) {
+            const guest = loadedGuests[i];
+            btnBatchDownload.textContent = `Descargando ${i + 1}/${loadedGuests.length}...`;
+            setGuestName(guest);
+            await exportInvitationPng();
+            await new Promise((r) => setTimeout(r, 420));
+          }
+
+          btnBatchDownload.disabled = false;
+          btnBatchDownload.innerHTML = origHtml;
+          showToast(`Se descargaron ${loadedGuests.length} invitaciones personalizadas.`);
+        });
+      }
+
+      /**
+       * 8. Impresión / Guardar como PDF 9:16 sin márgenes
        */
       if (btnPrintPdf) {
         btnPrintPdf.addEventListener('click', function () {
           if (document.activeElement && typeof document.activeElement.blur === 'function') {
             document.activeElement.blur();
           }
-          showToast('Abriendo vista de impresión 9:16 (elige "Guardar como PDF" sin márgenes).', 4000);
+          showToast('Abriendo diálogo de impresión 9:16 (elige "Guardar como PDF" sin márgenes).', 4200);
           setTimeout(() => {
             window.print();
           }, 220);
