@@ -517,27 +517,39 @@
       left: 50%;
       transform: translateX(-50%) translateY(14px);
       z-index: 2000;
-      background: rgba(10, 8, 7, 0.97);
+      background: rgba(10, 8, 7, 0.98);
       color: #fbf6ec;
-      border: 1px solid var(--gold-champagne);
-      border-radius: 0.85rem;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.79rem;
+      border: 1.5px solid var(--gold-champagne);
+      border-radius: 0.9rem;
+      padding: 0.9rem 1.35rem;
+      font-size: 0.82rem;
       font-weight: 500;
-      line-height: 1.4;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.8);
+      line-height: 1.45;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.88);
       display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      align-items: flex-start;
+      gap: 0.75rem;
       opacity: 0;
       pointer-events: none;
       transition: all 0.25s ease;
-      max-width: 92vw;
+      max-width: min(560px, 94vw);
     }
 
     .toast-pill.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
+    }
+
+    .kbd-badge {
+      display: inline-block;
+      padding: 0.1rem 0.42rem;
+      border-radius: 0.3rem;
+      background: rgba(216, 185, 121, 0.22);
+      border: 1px solid rgba(216, 185, 121, 0.55);
+      color: #f4dfb4;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
     }
 
     /* ==========================================================================
@@ -1048,8 +1060,8 @@
 
   <!-- Toast de Notificación -->
   <div id="toast-pill" class="toast-pill no-print" role="status" aria-live="polite">
-    <span class="w-2.5 h-2.5 rounded-full bg-[#25d366] shrink-0"></span>
-    <span id="toast-text">Listo</span>
+    <span class="w-2.5 h-2.5 rounded-full bg-[#25d366] shrink-0 mt-1"></span>
+    <div id="toast-text">Listo</div>
   </div>
 
   <!-- ========================================================================
@@ -1063,6 +1075,20 @@
       const LOCAL_FALLBACK_LOGO = './png_01.png';
       const PHOTO_PRIMARY = 'https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?auto=format&fit=crop&w=1080&q=85';
       const PHOTO_SECONDARY = 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1080&q=85';
+
+      // Escapes Unicode explícitos para evitar caracteres corruptos () en WhatsApp Desktop/Web
+      const EMOJI = {
+        CALENDAR: '\u{1F4C5}',
+        CLOCK: '\u{1F556}',
+        CLASSICAL: '\u{1F3DB}\u{FE0F}',
+        HOUSE: '\u{1F3E1}',
+        COMPASS: '\u{1F9ED}',
+        PIN: '\u{1F4CD}',
+        TIE: '\u{1F454}',
+        GLOBE: '\u{1F310}',
+        TURKEY: '\u{1F983}',
+        SPARKLES: '\u{2728}'
+      };
 
       // Referencias DOM de la tarjeta
       const invitationCard = document.getElementById('invitation-card');
@@ -1123,9 +1149,13 @@
         { name: 'Ing. Roberto Salazar', phone: '593991234567' }
       ];
 
-      function showToast(msg, duration = 4200) {
+      function showToast(msg, duration = 4500, isHtml = false) {
         if (!toastPill || !toastText) return;
-        toastText.textContent = msg;
+        if (isHtml) {
+          toastText.innerHTML = msg;
+        } else {
+          toastText.textContent = msg;
+        }
         toastPill.classList.add('show');
         clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
@@ -1197,7 +1227,7 @@
       }
 
       /**
-       * 4. Generador automático del mensaje de WhatsApp según tono y datos vigentes
+       * 4. Generador automático del mensaje de WhatsApp con escapes Unicode seguros
        */
       function buildWhatsAppMessage(guestNameOverride) {
         const guestName = (guestNameOverride || fieldGuestName.textContent || 'Invitado Especial').trim();
@@ -1210,15 +1240,15 @@
 
         if (currentTone === 'warm') {
           return (
-            `¡Hola ${guestName}! De parte de toda la familia *CIMAJ*, queremos compartir contigo nuestra invitación adjunta para celebrar juntos la *Cena de Acción de Gracias* 🦃✨\n\n` +
+            `¡Hola ${guestName}! De parte de toda la familia *CIMAJ*, queremos compartir contigo nuestra invitación adjunta para celebrar juntos la *Cena de Acción de Gracias* ${EMOJI.TURKEY}${EMOJI.SPARKLES}\n\n` +
             `Será una velada muy especial para agradecer, compartir y brindar por los proyectos alcanzados este año.\n\n` +
-            `📅 *Fecha:* ${dateVal}\n` +
-            `🕖 *Hora:* ${timeVal}\n` +
-            `🏡 *Lugar:* ${venueVal}\n` +
-            `🧭 *Dirección:* ${addressVal}\n` +
-            `📍 *Ubicación Google Maps:* ${mapsVal}\n` +
-            `👔 *Vestimenta:* ${dressVal}\n\n` +
-            `🌐 www.cimaj.gt.tc\n\n` +
+            `${EMOJI.CALENDAR} *Fecha:* ${dateVal}\n` +
+            `${EMOJI.CLOCK} *Hora:* ${timeVal}\n` +
+            `${EMOJI.HOUSE} *Lugar:* ${venueVal}\n` +
+            `${EMOJI.COMPASS} *Dirección:* ${addressVal}\n` +
+            `${EMOJI.PIN} *Ubicación Google Maps:* ${mapsVal}\n` +
+            `${EMOJI.TIE} *Vestimenta:* ${dressVal}\n\n` +
+            `${EMOJI.GLOBE} www.cimaj.gt.tc\n\n` +
             `Por favor confírmanos tu asistencia por este medio. ¡Te esperamos!`
           );
         }
@@ -1226,13 +1256,13 @@
         return (
           `Estimado/a *${guestName}*, reciba un cordial saludo de parte de *CIMAJ* (*Corporación de Indagación, Mediación, Asesoría Jurídica y Financiera*).\n\n` +
           `Con motivo del *Día de Acción de Gracias*, tenemos el honor de invitarle a compartir una velada especial de gratitud y confraternidad en nuestra sede. Adjunto encontrará su invitación personalizada.\n\n` +
-          `📅 *Fecha:* ${dateVal}\n` +
-          `🕖 *Hora:* ${timeVal}\n` +
-          `🏛️ *Lugar:* ${venueVal}\n` +
-          `🧭 *Dirección:* ${addressVal}\n` +
-          `📍 *Ubicación Google Maps:* ${mapsVal}\n` +
-          `👔 *Etiqueta:* ${dressVal}\n\n` +
-          `🌐 Conozca más sobre nuestra gestión institucional en: www.cimaj.gt.tc\n\n` +
+          `${EMOJI.CALENDAR} *Fecha:* ${dateVal}\n` +
+          `${EMOJI.CLOCK} *Hora:* ${timeVal}\n` +
+          `${EMOJI.CLASSICAL} *Lugar:* ${venueVal}\n` +
+          `${EMOJI.COMPASS} *Dirección:* ${addressVal}\n` +
+          `${EMOJI.PIN} *Ubicación Google Maps:* ${mapsVal}\n` +
+          `${EMOJI.TIE} *Etiqueta:* ${dressVal}\n\n` +
+          `${EMOJI.GLOBE} Conozca más sobre nuestra gestión institucional en: www.cimaj.gt.tc\n\n` +
           `Agradecemos confirmar su grata asistencia por este medio. ¡Será un gusto recibirle!`
         );
       }
@@ -1667,49 +1697,7 @@
         drawTrackedCenteredText(ctx, monthYear, W / 2, 1168, 3.6);
 
         ctx.fillStyle = '#f2dfb3';
-        ctx.font = '600 24px "Plus Jakarta Sans", sans-serif';
-        const timeText = (fieldTime.textContent || '19h30').trim();
-        drawTrackedCenteredText(ctx, timeText, 828, 1122, 3.5);
-
-        // Sede
-        ctx.fillStyle = '#fbf6ec';
-        ctx.font = 'italic 600 38px "Cormorant Garamond", Georgia, serif';
-        const venueText = (fieldVenue.textContent || '').trim();
-        ctx.fillText(venueText, W / 2, 1264);
-
-        // Recuadro Dedicado de DIRECCIÓN + Botón Píldora Google Maps
-        const addrBoxX = 110;
-        const addrBoxY = 1296;
-        const addrBoxW = W - 220;
-        const addrBoxH = 226;
-
-        drawRoundedRect(ctx, addrBoxX, addrBoxY, addrBoxW, addrBoxH, 16);
-        ctx.fillStyle = 'rgba(5, 4, 4, 0.64)';
-        ctx.fill();
-        ctx.strokeStyle = 'rgba(212, 175, 106, 0.48)';
-        ctx.lineWidth = 1.6;
-        ctx.stroke();
-
-        // Pin + Etiqueta DIRECCIÓN
-        ctx.fillStyle = '#d4af6a';
-        ctx.beginPath();
-        ctx.arc(W / 2 - 90, addrBoxY + 36, 7, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(W / 2 - 97, addrBoxY + 38);
-        ctx.lineTo(W / 2 - 90, addrBoxY + 50);
-        ctx.lineTo(W / 2 - 83, addrBoxY + 38);
-        ctx.fill();
-
-        ctx.font = '700 18px "Plus Jakarta Sans", sans-serif';
-        drawTrackedCenteredText(ctx, 'DIRECCIÓN', W / 2 + 12, addrBoxY + 42, 4.8);
-
-        ctx.fillStyle = '#fbf6ec';
-        ctx.font = '600 34px "Cormorant Garamond", Georgia, serif';
-        const addressText = (fieldAddress.textContent || '').trim();
-        drawWrappedCenteredText(ctx, addressText, W / 2, addrBoxY + 92, addrBoxW - 64, 40);
-
-        // Botón Píldora "📍 Ver Ubicación en Google Maps"
+        // Botón Píldora "Ver Ubicación en Google Maps"
         const pillW = 470;
         const pillH = 52;
         const pillX = (W - pillW) / 2;
@@ -1728,7 +1716,7 @@
 
         ctx.fillStyle = '#f5e3b8';
         ctx.font = '700 21px "Plus Jakarta Sans", sans-serif';
-        ctx.fillText('📍  Ver Ubicación en Google Maps', W / 2, pillY + 34);
+        ctx.fillText(`${EMOJI.PIN}  Ver Ubicación en Google Maps`, W / 2, pillY + 34);
 
         // Código de vestimenta
         ctx.fillStyle = 'rgba(229, 216, 195, 0.92)';
@@ -1754,6 +1742,31 @@
         });
       }
 
+      /**
+       * Retorna exclusivamente una Promesa de Blob PNG para pasarla SINCRÓNICAMENTE
+       * dentro de ClipboardItem y conservar la activación del usuario en Safari/Chrome macOS.
+       */
+      function renderGuestPngBlob(guestNameOverride) {
+        return renderInvitationToBlob(guestNameOverride).then((res) => {
+          if (!res || !res.blob) {
+            throw new Error('No se pudo generar el Blob PNG');
+          }
+          return res.blob;
+        });
+      }
+
+      /**
+       * Copia la tarjeta PNG al portapapeles de forma síncrona con el clic del usuario.
+       */
+      function copyPngToClipboardSync(guestNameOverride) {
+        if (!navigator.clipboard || typeof navigator.clipboard.write !== 'function' || typeof window.ClipboardItem !== 'function') {
+          return Promise.reject(new Error('ClipboardItem no soportado'));
+        }
+        const blobPromise = renderGuestPngBlob(guestNameOverride);
+        const item = new ClipboardItem({ 'image/png': blobPromise });
+        return navigator.clipboard.write([item]);
+      }
+
       async function downloadSinglePng(guestNameOverride) {
         const filename = buildExportFilename(guestNameOverride);
         const { dataUrl } = await renderInvitationToBlob(guestNameOverride);
@@ -1767,77 +1780,94 @@
       }
 
       /**
-       * 8. Flujo inteligente de envío WhatsApp (PNG + Texto personalizado)
+       * 8. Flujo de envío WhatsApp optimizado para macOS Safari/Chrome y Móvil:
+       *    - En escritorio: ejecuta navigator.clipboard.write([new ClipboardItem(...)])
+       *      de forma SÍNCRONA antes de cualquier await para no perder el gesto de usuario.
+       *    - En móvil: usa Web Share API con archivo PNG + texto.
        */
-      async function sendViaWhatsApp(guestObj) {
+      function sendViaWhatsApp(guestObj, triggerBtn) {
         const guestName = (guestObj.name || 'Invitado Especial').trim();
         const normalizedPhone = normalizeEcuadorPhone(guestObj.phone);
 
-        // Seleccionar invitado en vista previa y actualizar mensaje
+        // Actualizar vista previa y mensaje inmediatamente
         fieldGuestName.textContent = guestName;
-        const messageText = buildWhatsAppMessage(guestName);
+        const messageText = isMessageManuallyEdited
+          ? waMessagePreview.value
+          : buildWhatsAppMessage(guestName);
         waMessagePreview.value = messageText;
-        isMessageManuallyEdited = false;
 
         const filename = buildExportFilename(guestName);
-        const { blob } = await renderInvitationToBlob(guestName);
-
-        // 1) Intentar Web Share API con archivos si el dispositivo es móvil táctil y lo soporta
         const isMobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (isMobileDevice && blob && navigator.canShare && navigator.share) {
-          try {
-            const pngFile = new File([blob], filename, { type: 'image/png' });
-            if (navigator.canShare({ files: [pngFile] })) {
-              await navigator.share({
-                files: [pngFile],
-                text: messageText,
-                title: `Invitación Cena de Acción de Gracias — ${guestName}`
-              });
-              showToast(`Invitación y mensaje compartidos para ${guestName}.`);
-              return;
-            }
-          } catch (err) {
-            if (err && err.name === 'AbortError') return;
-          }
+
+        // Rama 1: Dispositivos móviles táctiles con Web Share API de archivos
+        if (isMobileDevice && navigator.share && navigator.canShare) {
+          renderGuestPngBlob(guestName)
+            .then(async (blob) => {
+              const pngFile = new File([blob], filename, { type: 'image/png' });
+              if (navigator.canShare({ files: [pngFile] })) {
+                await navigator.share({
+                  files: [pngFile],
+                  text: messageText,
+                  title: `Invitación Cena de Acción de Gracias — ${guestName}`
+                });
+                showToast(`Invitación PNG y mensaje compartidos para ${guestName}.`);
+              } else {
+                const encodedText = encodeURIComponent(messageText);
+                const waUrl = normalizedPhone
+                  ? `https://wa.me/${normalizedPhone}?text=${encodedText}`
+                  : `https://wa.me/?text=${encodedText}`;
+                await downloadSinglePng(guestName);
+                window.open(waUrl, '_blank', 'noopener,noreferrer');
+              }
+            })
+            .catch((err) => {
+              if (err && err.name === 'AbortError') return;
+              showToast('No se pudo abrir el menú compartir; descarga el PNG manualmente.');
+            });
+          return;
         }
 
-        // 2) En escritorio o envío directo a número específico:
-        //    Copiar imagen PNG al portapapeles (ClipboardItem image/png) + abrir wa.me con texto listo
-        let copiedImage = false;
-        if (blob && navigator.clipboard && window.ClipboardItem) {
-          try {
-            await navigator.clipboard.write([
-              new ClipboardItem({ 'image/png': blob })
-            ]);
-            copiedImage = true;
-          } catch (_) {
-            copiedImage = false;
-          }
-        }
-
-        // Si el navegador bloqueó el portapapeles de imagen, descargar el PNG automáticamente como respaldo
-        if (!copiedImage) {
-          await downloadSinglePng(guestName);
-        }
+        // Rama 2: Escritorio (macOS / Windows) — Copia SÍNCRONA al portapapeles antes de abrir wa.me
+        const clipboardPromise = copyPngToClipboardSync(guestName);
 
         const encodedText = encodeURIComponent(messageText);
         const waUrl = normalizedPhone
           ? `https://wa.me/${normalizedPhone}?text=${encodedText}`
           : `https://wa.me/?text=${encodedText}`;
 
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
-
-        if (copiedImage) {
-          showToast(
-            'Imagen PNG copiada al portapapeles y chat abierto con el texto listo: presiona Cmd+V / Pegar en WhatsApp para adjuntar la tarjeta arriba del mensaje.',
-            6500
-          );
-        } else {
-          showToast(
-            'Chat de WhatsApp abierto con el texto listo y tarjeta PNG descargada para adjuntar.',
-            5500
-          );
+        const origLabel = triggerBtn ? triggerBtn.textContent : '';
+        if (triggerBtn) {
+          triggerBtn.disabled = true;
+          triggerBtn.textContent = 'Copiando PNG...';
         }
+
+        clipboardPromise
+          .then(() => {
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+            showToast(
+              `<div><strong class="text-[#f4dfb4]">1. Imagen PNG (1080×1920) copiada al portapapeles.</strong><br/>` +
+              `2. En el chat de WhatsApp que se abrió con el texto listo, presiona <span class="kbd-badge">Cmd + V</span> (Mac) o <span class="kbd-badge">Ctrl + V</span> (Windows) para adjuntar la tarjeta como pie de foto.</div>`,
+              8500,
+              true
+            );
+          })
+          .catch(async () => {
+            // Respaldo automático si el navegador restringe ClipboardItem
+            await downloadSinglePng(guestName);
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+            showToast(
+              `<div><strong class="text-[#f4dfb4]">Tarjeta descargada como ${filename}.</strong><br/>` +
+              `El protocolo de WhatsApp solo pre-carga texto por enlace; arrastra o adjunta la imagen descargada dentro del chat abierto.</div>`,
+              8000,
+              true
+            );
+          })
+          .finally(() => {
+            if (triggerBtn) {
+              triggerBtn.disabled = false;
+              triggerBtn.textContent = origLabel;
+            }
+          });
       }
 
       /**
@@ -1912,6 +1942,33 @@
             showToast(`Vista previa: ${guests[idx].name}`);
           });
 
+          const copyImgBtn = document.createElement('button');
+          copyImgBtn.type = 'button';
+          copyImgBtn.className = 'tool-btn !py-1.5 !px-2 text-[11px] text-[#f4dfb4]';
+          copyImgBtn.textContent = 'Copiar PNG';
+          copyImgBtn.title = 'Copiar imagen PNG 1080×1920 al portapapeles para pegar en WhatsApp';
+          copyImgBtn.addEventListener('click', () => {
+            selectGuest(idx);
+            const origText = copyImgBtn.textContent;
+            copyImgBtn.disabled = true;
+            copyImgBtn.textContent = 'Copiando...';
+            copyPngToClipboardSync(guests[idx].name)
+              .then(() => {
+                showToast(
+                  `<div>Imagen PNG de <strong class="text-[#f4dfb4]">${guests[idx].name}</strong> copiada. Ve a WhatsApp y presiona <span class="kbd-badge">Cmd + V</span> / <span class="kbd-badge">Ctrl + V</span>.</div>`,
+                  6000,
+                  true
+                );
+              })
+              .catch(async () => {
+                await downloadSinglePng(guests[idx].name);
+              })
+              .finally(() => {
+                copyImgBtn.disabled = false;
+                copyImgBtn.textContent = origText;
+              });
+          });
+
           const pngBtn = document.createElement('button');
           pngBtn.type = 'button';
           pngBtn.className = 'tool-btn !py-1.5 !px-2 text-[11px]';
@@ -1927,17 +1984,9 @@
           sendBtn.className = 'tool-btn tool-btn-wa !py-1.5 !px-2.5 text-[11px]';
           sendBtn.textContent = 'Enviar (PNG + Texto)';
           sendBtn.title = 'Copiar PNG al portapapeles y abrir chat de WhatsApp con el mensaje';
-          sendBtn.addEventListener('click', async () => {
+          sendBtn.addEventListener('click', () => {
             selectGuest(idx);
-            const orig = sendBtn.textContent;
-            sendBtn.disabled = true;
-            sendBtn.textContent = 'Preparando...';
-            try {
-              await sendViaWhatsApp(guests[idx]);
-            } finally {
-              sendBtn.disabled = false;
-              sendBtn.textContent = orig;
-            }
+            sendViaWhatsApp(guests[idx], sendBtn);
           });
 
           const delBtn = document.createElement('button');
@@ -1958,6 +2007,7 @@
           });
 
           actionsBox.appendChild(previewBtn);
+          actionsBox.appendChild(copyImgBtn);
           actionsBox.appendChild(pngBtn);
           actionsBox.appendChild(sendBtn);
           actionsBox.appendChild(delBtn);
